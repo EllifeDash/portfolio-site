@@ -1,0 +1,76 @@
+:root {
+  /* ===== Dark (default) ===== */
+  --bg: #161412;
+  --surface: #201D1A;
+  --surface-hover: #292521;
+  --text: #F3EFE8;
+  --text-secondary: #A0968B;
+  --icon-mono: #A0968B;
+  --primary: #6E7DFF;
+  --primary-deep: #4B58E6;
+  --primary-ink: #FFFFFF;
+  --secondary: #6F8D73;
+  --error: #B45A5A;
+  --border: rgba(255, 255, 255, 0.08);
+  --divider: rgba(255, 255, 255, 0.06);
+  --shadow-color: rgba(0, 0, 0, 0.35);
+  --selection: #6E7DFF33;
+
+  /* ===== Typography ===== */
+  --font-heading: 'Satoshi', Inter, sans-serif;
+  --font-body: 'Instrument Sans', Inter, sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+  --font-signature: 'Passions Conflict', cursive;
+
+  /* ===== Spacing scale (8px base) ===== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ===== Radius ===== */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ===== Layout ===== */
+  --container: 1200px;
+  --content-width: 760px;
+  --section-spacing: 120px;
+  --card-gap: 24px;
+
+  /* ===== Motion ===== */
+  --dur-fast: 150ms;
+  --dur-normal: 250ms;
+  --dur-slow: 400ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --bg: #F6F4F1;
+  --surface: #FFFFFF;
+  --surface-hover: #F1ECE6;
+  --text: #161412;
+  --text-secondary: #6F6962;
+  --icon-mono: #6F6962;
+  --primary: #0303b4;
+  --primary-deep: #0303b4;
+  --primary-ink: #FFFFFF;
+  --secondary: #6F8D73;
+  --error: #B45A5A;
+  --border: rgba(0, 0, 0, 0.08);
+  --divider: rgba(0, 0, 0, 0.06);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --selection: #0303b422;
+  color-scheme: light;
+}

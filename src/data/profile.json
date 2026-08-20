@@ -1,0 +1,268 @@
+{
+  "name": "Abdullah Tayyab",
+  "alias": "Ellife Dash",
+  "title": "IT Operations & Full-Stack Web Developer",
+  "tagline": "Full-stack developer building fast, offline-first web applications with React & Node",
+  "location": "Nankana Sahib, Punjab, Pakistan",
+  "timezone": "PKT (UTC+5)",
+  "contact": {
+    "email": "aeikay99@gmail.com",
+    "phone": ["+92 324 0096098", "+92 343 8587209"],
+    "whatsapp": true
+  },
+  "summary": "IT operations professional with 5+ years in government infrastructure at Punjab Police, complemented by 2+ years of full-stack web development. Experienced with a wide range of internal government systems — complaint management, FIR processing, citizen facilitation, tenant/hotel monitoring — while building and deploying real-world web applications like patient management systems and clinic ecosystems. Combines deep public-sector operational knowledge with hands-on development skills to build practical, offline-first software for local needs.",
+  "profiles": [
+    {
+      "type": "it",
+      "role": "IT Operations / Computer Operator",
+      "organization": "Punjab Police",
+      "description": "IT Control Room operations, computer systems management, data processing and government tech infrastructure"
+    },
+    {
+      "type": "developer",
+      "role": "Full-Stack Web Developer",
+      "stack": ["MongoDB", "Express.js", "React", "Node.js"],
+      "focus": "Web applications, clinic management systems, automation tools",
+      "projects": [
+        {
+          "name": "Aafiyat",
+          "description": "Offline-first patient management system for private clinics in Pakistan — SOAP consultations, prescriptions, billing, appointment scheduling, desktop app",
+          "stack": ["Node.js", "Express", "SQLite", "Supabase", "Electron", "Tailwind CSS"],
+          "status": "released",
+          "site": ""
+        },
+        {
+          "name": "Nankana Home Care",
+          "description": "Three-tier healthcare ecosystem: public brochure site with booking, offline-first PWA (MediAssist Pro) for medical assistants, and secure admin portal with magic-link onboarding",
+          "stack": ["Vanilla JS", "Supabase", "PWA", "GitHub Pages", "n8n"],
+          "status": "live",
+          "site": "https://ellifedash.github.io/nankana-home-care/"
+        },
+        {
+          "name": "CMS Extension",
+          "description": "Production-grade Chrome Extension (Manifest V3) for real-time SLA monitoring, policy evasion detection, and suspicious offense change tracking on a government Complaint Management System",
+          "stack": ["Chrome MV3", "Vanilla JS", "DataTables API"],
+          "status": "live"
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Front Desk Officer / IT Operations",
+      "organization": "Punjab Police",
+      "location": "Nankana Sahib, Pakistan",
+      "period": "Apr 2021 - Present",
+      "startDate": "2021-04-07",
+      "highlights": [
+        "Operate a wide range of internal government systems — CMS (Complaints), FIR, PKM (Citizen Facilitation), Hotel Eye, TRS (Tenant Registration), AVLS (Vehicle Tracking), eFOAS (e-Filing), and more",
+        "Manage front desk operations, public inquiries, data entry, document verification, and record management",
+        "Certified CC-III recognition 10 times for performance excellence"
+      ]
+    },
+    {
+      "role": "Computer Operator",
+      "organization": "Superior Group of Colleges",
+      "location": "Nankana Sahib, Pakistan",
+      "period": "May 2017 - May 2018",
+      "highlights": [
+        "Data entry, document management, and system operations",
+        "Technical assistance for computer-related tasks",
+        "Recognized as Employee of the Month"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "BSc (in progress)",
+      "field": "Computer Science (BSCS)",
+      "institution": "Virtual University of Pakistan",
+      "status": "in-progress",
+      "details": ["134 total credits, 122 earned (12 remaining)", "CGPA 2.43/4.0", "Expected graduation: 2026"]
+    },
+    {
+      "degree": "B.A.",
+      "field": "Computer Studies & English Literature",
+      "institution": "University of the Punjab",
+      "location": "Lahore, Pakistan",
+      "year": 2019,
+      "details": ["2017–2019", "Second Division"]
+    },
+    {
+      "degree": "Diploma",
+      "field": "Computer Operations",
+      "institution": "Innovative Institute",
+      "location": "Lahore, Pakistan",
+      "year": 2018,
+      "details": ["Office Management Suite (Word, Excel, PowerPoint)", "Graphic Design (Photoshop, Corel Draw)"]
+    },
+    {
+      "degree": "HSSC (FSc)",
+      "field": "General Science",
+      "institution": "Hira Public Higher Secondary School for Boys",
+      "location": "Nankana Sahib, Pakistan",
+      "board": "BISE Lahore",
+      "year": 2017,
+      "details": ["Marks: 635/1100"]
+    },
+    {
+      "degree": "SSC (Matric)",
+      "field": "Science (Computer Science)",
+      "institution": "Govt. M.C. Boys High School",
+      "location": "Nankana Sahib, Pakistan",
+      "board": "BISE Lahore",
+      "year": 2015,
+      "details": ["Marks: 794/1100", "Grade: A"]
+    }
+  ],
+  "techStack": {
+    "frontend": ["React", "HTML5", "CSS3", "Tailwind CSS", "JavaScript (ES6+)"],
+    "backend": ["Node.js", "Express.js"],
+    "database": ["MongoDB", "SQLite", "Postgres", "Supabase"],
+    "desktop": ["Electron"],
+    "browser": ["Chrome Extension (MV3)"],
+    "tools": ["Git", "VS Code", "Postman", "n8n", "GitHub Actions"],
+    "deployment": ["GitHub Pages"]
+  },
+  "skills": {
+    "technical": [
+      "Web Development (MERN Stack)",
+      "Government IT Systems Operations",
+      "Database Management (SQLite, Postgres, MongoDB)",
+      "Chrome Extension Development",
+      "Desktop App Development (Electron)",
+      "PWA Architecture",
+      "Automation & CI/CD (GitHub Actions)"
+    ],
+    "soft": [
+      "Public Dealing & Citizen Facilitation",
+      "Complaint Resolution & Reporting",
+      "Data Entry & Document Management",
+      "Cross-functional Team Coordination"
+    ]
+  },
+  "certifications": {
+    "inProgress": [
+      "CS50 — Harvard's Computer Science (edX)",
+      "freeCodeCamp — Responsive Web Design",
+      "freeCodeCamp — JavaScript Algorithms & Data Structures"
+    ]
+  },
+  "languages": [
+    { "language": "Urdu", "proficiency": "Native" },
+    { "language": "English", "proficiency": "Professional" },
+    { "language": "Punjabi", "proficiency": "Native" }
+  ],
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/abdullah-tayyab-professional/",
+    "github": "https://github.com/EllifeDash",
+    "behance": "https://www.behance.net/abdullahtayyab1",
+    "facebook": "https://www.facebook.com/profile.php?id=61575288033668",
+    "instagram": "https://instagram.com/ellife_dash",
+    "portfolio": "https://abdullahtayyab.dev",
+    "website": "https://abdullahtayyab.dev",
+    "email": "aeikay99@gmail.com"
+  },
+  "interests": ["Web Development", "IT Operations", "Clinic Management Systems", "Automation", "Problem Solving", "Chess", "Gaming (PUBG Mobile)"],
+  "leisure": {
+    "chess": {
+      "lichess": "https://lichess.org/@/Ellife_Dash",
+      "chesscom": "https://www.chess.com/member/abdullah_tayyab",
+      "fide": {
+        "url": "https://ratings.fide.com/profile/7825366",
+        "note": "No rating yet"
+      }
+    },
+    "pubgMobile": {
+      "accountId": "5416594090"
+    },
+    "gamesPlayed": [
+      "Project IGI (1 & 2)",
+      "Max Payne (1 & 2)",
+      "Mount & Blade (1 & 2)",
+      "Age of Empires",
+      "Rise of Nations",
+      "Tekken (3, 7, Tag Tournament)"
+    ]
+  },
+  "brand": {
+    "alias": "Ellife Dash",
+    "name": "Abdullah Tayyab — Portfolio",
+    "tone": "Minimal, premium, editorial, warm, technical",
+    "personality": ["Minimal", "Premium", "Creative", "Thoughtful", "Modern", "Editorial", "Technical", "Warm"],
+    "source": "brandkit.json (external, self-researched)",
+    "colors": {
+      "dark": {
+        "background": "#161412",
+        "surface": "#201D1A",
+        "surfaceHover": "#292521",
+        "text": "#F3EFE8",
+        "textSecondary": "#A0968B",
+        "primary": "#5B6BFF",
+        "primaryInk": "#FFFFFF",
+        "secondary": "#6F8D73",
+        "error": "#B45A5A",
+        "border": "rgba(255,255,255,0.08)",
+        "divider": "rgba(255,255,255,0.06)",
+        "shadow": "rgba(0,0,0,0.35)",
+        "selection": "#5B6BFF33"
+      },
+      "light": {
+        "background": "#F6F4F1",
+        "surface": "#FFFFFF",
+        "surfaceHover": "#F1ECE6",
+        "text": "#161412",
+        "textSecondary": "#6F6962",
+        "primary": "#0303b4",
+        "primaryInk": "#FFFFFF",
+        "secondary": "#6F8D73",
+        "error": "#B45A5A",
+        "border": "rgba(0,0,0,0.08)",
+        "divider": "rgba(0,0,0,0.06)",
+        "shadow": "rgba(0,0,0,0.08)",
+        "selection": "#0303b422"
+      }
+    },
+    "typography": {
+      "heading": { "family": "Satoshi", "fallback": ["Inter", "sans-serif"], "source": "Fontshare", "weight": [500, 700, 900] },
+      "body": { "family": "Lora", "fallback": ["Georgia", "serif"], "source": "Google Fonts", "weight": [400, 500, 600] },
+      "code": { "family": "JetBrains Mono", "fallback": ["monospace"], "source": "Google Fonts", "weight": [400, 500] },
+      "signature": { "family": "Passions Conflict", "source": "Google Fonts", "usage": ["footer"], "note": "Footer / personal mark only; never in headers (keeps technical credibility)" }
+    },
+    "typeScale": {
+      "display": { "size": "72px", "lineHeight": 1, "weight": 700 },
+      "h1": { "size": "56px", "lineHeight": 1.1, "weight": 700 },
+      "h2": { "size": "42px", "lineHeight": 1.15, "weight": 700 },
+      "h3": { "size": "32px", "lineHeight": 1.2, "weight": 700 },
+      "h4": { "size": "24px", "lineHeight": 1.3, "weight": 600 },
+      "bodyLarge": { "size": "20px", "lineHeight": 1.7 },
+      "body": { "size": "18px", "lineHeight": 1.75 },
+      "small": { "size": "15px", "lineHeight": 1.6 },
+      "caption": { "size": "13px", "lineHeight": 1.5 },
+      "code": { "size": "15px", "lineHeight": 1.6 }
+    },
+    "spacing": { "base": 8, "scale": [4, 8, 12, 16, 24, 32, 48, 64, 96, 128] },
+    "radius": { "small": 8, "medium": 14, "large": 20, "extraLarge": 28, "pill": 999 },
+    "layout": { "container": "1200px", "contentWidth": "760px", "sectionSpacing": "120px", "cardGap": "24px" },
+    "motion": {
+      "duration": { "fast": "150ms", "normal": "250ms", "slow": "400ms" },
+      "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "hover": { "translateY": "-2px", "scale": 1.01 },
+      "reducedMotion": "respect prefers-reduced-motion; soften/disable non-essential motion"
+    },
+    "buttons": {
+      "borderRadius": 16,
+      "height": 52,
+      "primary": { "background": "{primary}", "text": "{primaryInk}" },
+      "secondary": { "background": "transparent", "border": "{border}", "text": "{text}" },
+      "ghost": { "background": "transparent", "text": "{primary}" }
+    },
+    "techStackDisplay": ["React", "Node.js", "Express.js", "MongoDB", "SQLite", "Supabase", "Tailwind CSS", "JavaScript", "Electron", "PWA", "Chrome MV3", "Git", "n8n", "GitHub Actions"],
+    "voice": { "tone": ["Confident", "Professional", "Thoughtful", "Friendly"], "avoid": ["Buzzwords", "Excessive emojis", "Marketing clichés"] }
+  },
+  "future": {
+    "portfolio": "To be built with AI assistance — personal portfolio site showcasing projects and CV",
+    "certs": "CS50 + freeCodeCamp certifications in progress",
+    "next": "Export CV to DOCX/PDF, build portfolio website"
+  }
+}
