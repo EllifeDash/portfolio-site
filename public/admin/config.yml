@@ -3,6 +3,7 @@ backend:
   repo: EllifeDash/portfolio-site
   branch: main
   app_id: Ov23lifw9Lwf5o8N8IOO
+  auth_type: pkce
 
 # Enable the editor to commit media and content directly to the repo.
 publish_mode: editorial_workflow
