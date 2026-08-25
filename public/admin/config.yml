@@ -1,0 +1,40 @@
+backend:
+  name: github
+  repo: EllifeDash/portfolio-site
+  branch: main
+
+# Enable the editor to commit media and content directly to the repo.
+publish_mode: editorial_workflow
+
+media_folder: "public/media/uploads"
+public_folder: "/media/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: description, label: "Description", widget: string, required: false }
+      - { name: pubDate, label: "Date", widget: datetime }
+      - { name: tags, label: "Tags", widget: list, required: false }
+      - { name: draft, label: "Draft", widget: boolean, default: false, required: false }
+      - { name: body, label: "Body", widget: markdown }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: summary, label: "Summary", widget: string }
+      - { name: role, label: "Role", widget: string }
+      - { name: status, label: "Status", widget: select, options: [live, released, in-progress, archived], default: live }
+      - { name: stack, label: "Tech Stack", widget: list, required: false }
+      - { name: liveUrl, label: "Live URL", widget: string, required: false }
+      - { name: repoUrl, label: "Repo URL", widget: string, required: false }
+      - { name: order, label: "Order", widget: number, default: 99, required: false }
+      - { name: body, label: "Case Study", widget: markdown }

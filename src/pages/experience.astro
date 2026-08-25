@@ -1,0 +1,105 @@
+---
+import Reading from "../components/Reading.astro";
+import { profile } from "../data/profile";
+
+const exp = [...profile.experience].sort(
+  (a, b) => new Date(b.startDate).valueOf() - new Date(a.startDate).valueOf()
+);
+const certCount = profile.certifications.inProgress.length;
+const eduCount = profile.education.length;
+---
+
+<Reading
+  title="Experience"
+  description={`Professional experience of ${profile.name}`}
+>
+  <p class="eyebrow">Experience</p>
+  <h1>Professional experience</h1>
+  <p class="lede">
+    A blend of public-sector IT operations and hands-on software development.
+  </p>
+
+  <div style="margin-top:var(--space-7)">
+    {
+      exp.map((e) => (
+        <div class="timeline-item">
+          <h3>{e.role}</h3>
+          <p class="org">
+            {e.organization} · {e.location}
+          </p>
+          <p class="muted" style="font-family:var(--font-heading);font-size:0.85rem">
+            {e.period}
+          </p>
+          <ul class="muted" style="margin-top:var(--space-3)">
+            {e.highlights.map((h) => (
+              <li>{h}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  <hr class="divider" />
+
+  <h2>Education</h2>
+  <div class="grid grid-2">
+    {
+      profile.education.map((ed) => (
+        <div class="card">
+          <h3>{ed.degree}</h3>
+          <p class="muted">{ed.field}</p>
+          <p class="org" style="margin-top:6px">
+            {ed.institution}
+            {ed.location ? ` · ${ed.location}` : ""}
+            {ed.year ? ` · ${ed.year}` : ""}
+          </p>
+          <ul class="muted" style="margin-top:var(--space-3)">
+            {ed.details.map((d) => (
+              <li>{d}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  <hr class="divider" />
+
+  <h2>Languages</h2>
+  <div class="tag-list">
+    {
+      profile.languages.map((l) => (
+        <span class="chip">
+          {l.language} · {l.proficiency}
+        </span>
+      ))
+    }
+  </div>
+
+  <h2 style="margin-top:var(--space-7)">Certifications in progress</h2>
+  <ul class="muted">
+    {profile.certifications.inProgress.map((c) => <li>{c}</li>)}
+  </ul>
+
+  <Fragment slot="aside">
+    <div class="aside-block">
+      <span class="label">At a glance</span>
+      <ul class="aside-list">
+        <li><strong>Current:</strong> {exp[0].organization}</li>
+        <li><strong>Since:</strong> {exp[0].period.split(" - ")[0]}</li>
+        <li><strong>Education:</strong> {eduCount} entries</li>
+        <li><strong>Certs:</strong> {certCount} in progress</li>
+        <li><strong>Languages:</strong> {profile.languages.length}</li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <span class="label">Get in touch</span>
+      <ul class="aside-list">
+        <li><a href="/connect">Contact →</a></li>
+        <li><a href="/projects">View work →</a></li>
+        <li><a href="/blog">Read writing →</a></li>
+      </ul>
+    </div>
+  </Fragment>
+</Reading>

@@ -1,0 +1,82 @@
+---
+import Reading from "../components/Reading.astro";
+import { profile } from "../data/profile";
+
+const langs = profile.languages.map((l) => l.language).join(", ");
+---
+
+<Reading
+  title="About"
+  description={`About ${profile.name} — ${profile.title}`}
+>
+  <p class="eyebrow">About me</p>
+  <h1>{profile.name}</h1>
+  <p class="lede">{profile.summary}</p>
+
+  <hr class="divider" />
+
+  <h2>Who I am</h2>
+  <p>
+    I'm Abdullah Tayyab, also known as <strong>Ellife Dash</strong> — a developer
+    and IT operations professional based in {profile.location}. For the past five-plus
+    years I've kept critical government infrastructure running at Punjab Police, while
+    spending my off-hours building real software for real local problems: clinic
+    management, citizen healthcare, and automation tooling.
+  </p>
+  <p>
+    I care less about flashy interfaces and more about software that actually works
+    offline, loads fast, and respects the person on the other side of the screen. This
+    site is a reflection of that: quiet, readable, and substance-first.
+  </p>
+
+  <h2>What I do</h2>
+  <p>
+    On the operations side, I work across a broad range of internal government systems —
+    complaints, FIRs, citizen facilitation, tenant and vehicle monitoring, and
+    electronic filing. On the engineering side, I build full-stack applications with the
+    MERN stack, desktop apps with Electron, PWAs, and Chrome extensions.
+  </p>
+
+  <h2>How I think</h2>
+  <ul>
+    <li><strong>Offline-first.</strong> Networks are unreliable; local software should not fall apart when they are.</li>
+    <li><strong>Readable over clever.</strong> Code and writing should be understood by a human six months later.</li>
+    <li><strong>Small, sharp tools.</strong> Solve the actual problem, then stop.</li>
+  </ul>
+
+  <hr class="divider" />
+
+  <div class="callout">
+    <h3 style="margin-bottom:8px">Currently</h3>
+    <p class="muted">
+      Finishing a BSc in Computer Science (Virtual University of Pakistan) and working
+      through CS50 and freeCodeCamp certifications. Always happy to talk about clinic
+      systems, government tech, or offline-first architecture.
+    </p>
+    <p style="margin-top:16px">
+      <a class="btn btn-primary" href="/connect">Connect with me</a>
+      <a class="btn btn-secondary" href="/experience">See my experience</a>
+    </p>
+  </div>
+
+  <Fragment slot="aside">
+    <div class="aside-block">
+      <span class="label">Quick facts</span>
+      <ul class="aside-list">
+        <li><strong>Role:</strong> {profile.title}</li>
+        <li><strong>Based in:</strong> {profile.location}</li>
+        <li><strong>Experience:</strong> 5+ yrs IT operations</li>
+        <li><strong>Languages:</strong> {langs}</li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <span class="label">Online</span>
+      <ul class="aside-list">
+        <li><a href={profile.links.github} target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href={profile.links.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href={profile.links.instagram} target="_blank" rel="noopener">Instagram ↗</a></li>
+        <li><a href={profile.links.behance} target="_blank" rel="noopener">Behance ↗</a></li>
+      </ul>
+    </div>
+  </Fragment>
+</Reading>

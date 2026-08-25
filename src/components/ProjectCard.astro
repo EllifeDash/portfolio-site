@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+const { project } = Astro.props;
+const { data, id } = project;
+const statusLabel: Record<string, string> = {
+  live: "Live",
+  released: "Released",
+  "in-progress": "In progress",
+  archived: "Archived",
+};
+const arrow =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+---
+
+<a class="card" href={`/projects/${id}`}>
+  <div class="meta-row" style="margin-bottom:12px">
+    <span class="eyebrow">{data.role}</span>
+    <span class="chip">{statusLabel[data.status] ?? data.status}</span>
+  </div>
+  <h3>{data.title}</h3>
+  <p class="muted" style="margin-top:8px">{data.summary}</p>
+  <div class="tag-list" style="margin-top:16px">
+    {data.stack.slice(0, 6).map((s) => <span class="chip">{s}</span>)}
+  </div>
+  <span class="card-arrow" set:html={`View case study ${arrow}`}></span>
+</a>

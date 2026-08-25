@@ -1,0 +1,90 @@
+---
+import Reading from "../../components/Reading.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+
+const statusLabel: Record<string, string> = {
+  live: "Live",
+  released: "Released",
+  "in-progress": "In progress",
+  archived: "Archived",
+};
+---
+
+<Reading title={data.title} description={data.summary}>
+  <a class="link" href="/projects">← All projects</a>
+  <p class="eyebrow" style="margin-top:var(--space-5)">{data.role}</p>
+  <h1>{data.title}</h1>
+  <div class="meta-row" style="margin-top:var(--space-4)">
+    <span class="chip">{statusLabel[data.status] ?? data.status}</span>
+    {
+      data.liveUrl && (
+        <a class="link" href={data.liveUrl} target="_blank" rel="noopener">Live ↗</a>
+      )
+    }
+    {
+      data.repoUrl && (
+        <a class="link" href={data.repoUrl} target="_blank" rel="noopener">Source ↗</a>
+      )
+    }
+  </div>
+  <p class="lede">{data.summary}</p>
+
+  <hr class="divider" />
+
+  <div class="prose">
+    <Content />
+  </div>
+
+  <hr class="divider" />
+  <p class="muted">
+    Want to know more about how this was built?
+    <a class="link" href="/connect">Get in touch →</a>
+  </p>
+
+  <Fragment slot="aside">
+    <div class="aside-block">
+      <span class="label">Project</span>
+      <ul class="aside-list">
+        <li><strong>Role:</strong> {data.role}</li>
+        <li><strong>Status:</strong> {statusLabel[data.status] ?? data.status}</li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <span class="label">Stack</span>
+      <div class="tag-list">
+        {data.stack.map((s) => <span class="chip">{s}</span>)}
+      </div>
+    </div>
+    {
+      (data.liveUrl || data.repoUrl) && (
+        <div class="aside-block">
+          <span class="label">Links</span>
+          <ul class="aside-list">
+            {data.liveUrl && (
+              <li>
+                <a href={data.liveUrl} target="_blank" rel="noopener">Live site ↗</a>
+              </li>
+            )}
+            {data.repoUrl && (
+              <li>
+                <a href={data.repoUrl} target="_blank" rel="noopener">Source code ↗</a>
+              </li>
+            )}
+          </ul>
+        </div>
+      )
+    }
+  </Fragment>
+</Reading>

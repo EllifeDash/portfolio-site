@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+const { post } = Astro.props;
+const { data, id } = post;
+const date = data.pubDate.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+const arrow =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+---
+
+<a class="card" href={`/blog/${id}`}>
+  <div class="meta-row" style="margin-bottom:10px">
+    <time class="muted" datetime={data.pubDate.toISOString()}>{date}</time>
+    {
+      data.tags.slice(0, 3).map((t) => (
+        <span class="chip">{t}</span>
+      ))
+    }
+  </div>
+  <h3>{data.title}</h3>
+  <p class="muted" style="margin-top:8px">{data.description}</p>
+  <span class="card-arrow" set:html={`Read article ${arrow}`}></span>
+</a>

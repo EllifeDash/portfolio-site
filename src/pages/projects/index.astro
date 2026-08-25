@@ -1,0 +1,24 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Base title="Projects" description="Case studies of selected projects by Abdullah Tayyab">
+  <section class="container section">
+    <p class="eyebrow">Projects</p>
+    <h1>Selected work</h1>
+    <p class="lede" style="max-width:60ch">
+      Each project below is a short case study — the problem, how I approached it, and
+      what came out of it.
+    </p>
+
+    <div class="grid grid-2" style="margin-top:var(--space-7)">
+      {projects.map((p) => <ProjectCard project={p} />)}
+    </div>
+  </section>
+</Base>

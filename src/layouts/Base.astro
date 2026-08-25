@@ -1,0 +1,143 @@
+---
+import "../styles/global.css";
+import { SITE, NAV_LINKS } from "../config";
+import { profile } from "../data/profile";
+import SocialLinks from "../components/SocialLinks.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description = profile.summary,
+  image = "/og.svg",
+} = Astro.props;
+
+const pageTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${profile.title}`;
+const canonical = new URL(Astro.url.pathname, SITE.domain).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, SITE.domain).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Dancing+Script:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t) {
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="/" class="brand">{SITE.shortName}<span>.</span></a>
+        <button
+          class="nav-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          data-nav-toggle>Menu</button
+        >
+        <nav class="nav-links" data-nav>
+          {
+            NAV_LINKS.map((l) => (
+              <a
+                href={l.href}
+                aria-current={
+                  Astro.url.pathname === l.href ||
+                  (l.href !== "/" && Astro.url.pathname.startsWith(l.href))
+                    ? "page"
+                    : undefined
+                }
+              >
+                {l.label}
+              </a>
+            ))
+          }
+          <button class="theme-toggle" aria-label="Toggle theme" data-theme-toggle>
+            <span data-theme-icon>◐</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <p class="muted">© {new Date().getFullYear()} {profile.name}</p>
+          <p class="signature">Ellife Dash</p>
+        </div>
+        <SocialLinks />
+      </div>
+    </footer>
+
+    <script is:inline>
+      (function () {
+        var toggle = document.querySelector("[data-theme-toggle]");
+        var icon = document.querySelector("[data-theme-icon]");
+        function sync() {
+          var t = document.documentElement.getAttribute("data-theme");
+          if (icon) icon.textContent = t === "dark" ? "☾" : "☀";
+        }
+        sync();
+        if (toggle) {
+          toggle.addEventListener("click", function () {
+            var cur = document.documentElement.getAttribute("data-theme");
+            var next = cur === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", next);
+            try {
+              localStorage.setItem("theme", next);
+            } catch (e) {}
+            sync();
+          });
+        }
+        var navToggle = document.querySelector("[data-nav-toggle]");
+        var nav = document.querySelector("[data-nav]");
+        if (navToggle && nav) {
+          navToggle.addEventListener("click", function () {
+            var open = nav.classList.toggle("open");
+            navToggle.setAttribute("aria-expanded", String(open));
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

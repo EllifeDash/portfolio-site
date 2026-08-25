@@ -1,0 +1,68 @@
+---
+import Base from "../layouts/Base.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import { profile } from "../data/profile";
+
+const waLink = `https://wa.me/${profile.contact.phone[0].replace(/\D/g, "")}`;
+const emailSubject = "Hello Abdullah";
+---
+
+<Base title="Connect" description={`Connect with ${profile.name}`}>
+  <section class="container section">
+    <p class="eyebrow">Connect</p>
+    <h1>Let's talk</h1>
+    <p class="lede" style="max-width:60ch">
+      I'm open to freelance work, collaborations, and conversations about offline-first
+      software, clinic systems, or government tech. The fastest way to reach me is email
+      or WhatsApp.
+    </p>
+
+    <div class="grid grid-2" style="margin-top:var(--space-6)">
+      <div class="card">
+        <h3>Email</h3>
+        <p class="muted" style="margin:8px 0">
+          Best for detailed proposals and introductions.
+        </p>
+        <a class="btn btn-primary" href={`mailto:${profile.contact.email}?subject=${emailSubject}`}>
+          {profile.contact.email}
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>WhatsApp</h3>
+        <p class="muted" style="margin:8px 0">
+          Quick messages and scheduling.
+        </p>
+        <a class="btn btn-primary" href={waLink} target="_blank" rel="noopener">
+          Message on WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="grid grid-2">
+      <div>
+        <h2>Find me</h2>
+        <p class="muted" style="margin-top:var(--space-3)">{profile.location}</p>
+        <div
+          class="map-placeholder"
+          role="img"
+          aria-label="Map location placeholder"
+        >
+          <span>Google Map embed coming soon</span>
+        </div>
+      </div>
+      <div>
+        <h2>Elsewhere</h2>
+        <div style="margin-top:var(--space-4)">
+          <SocialLinks />
+        </div>
+        <p class="muted" style="margin-top:var(--space-4)">
+          Also writing on the <a class="link" href="/blog">blog</a> — notes on
+          offline-first software and building for local needs.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

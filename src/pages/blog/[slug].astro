@@ -1,0 +1,67 @@
+---
+import Reading from "../../components/Reading.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", (p) => !p.data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { data } = post;
+const { Content } = await render(post);
+
+const date = data.pubDate.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+const words = post.body ? post.body.trim().split(/\s+/).length : 0;
+const readingTime = Math.max(1, Math.round(words / 200));
+---
+
+<Reading title={data.title} description={data.description}>
+  <a class="link" href="/blog">← All articles</a>
+  <p class="eyebrow" style="margin-top:var(--space-5)">{data.tags.join(" · ")}</p>
+  <h1>{data.title}</h1>
+  <p class="lede">{data.description}</p>
+
+  <hr class="divider" />
+
+  <div class="prose">
+    <Content />
+  </div>
+
+  <hr class="divider" />
+  <p class="muted">
+    Enjoyed this? <a class="link" href="/connect">Say hello →</a>
+  </p>
+
+  <Fragment slot="aside">
+    <div class="aside-block">
+      <span class="label">Article</span>
+      <ul class="aside-list">
+        <li><strong>Published:</strong> {date}</li>
+        <li><strong>Author:</strong> {data.author}</li>
+        <li><strong>Read:</strong> ~{readingTime} min</li>
+        {data.updatedDate && <li><strong>Updated:</strong> {data.updatedDate.toLocaleDateString()}</li>}
+      </ul>
+    </div>
+    <div class="aside-block">
+      <span class="label">Topics</span>
+      <ul class="aside-list">
+        {data.tags.map((t) => <li>{t}</li>)}
+      </ul>
+    </div>
+    <div class="aside-block">
+      <span class="label">More</span>
+      <ul class="aside-list">
+        <li><a href="/blog">All articles →</a></li>
+        <li><a href="/projects">Selected work →</a></li>
+      </ul>
+    </div>
+  </Fragment>
+</Reading>
