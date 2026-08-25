@@ -1,6 +1,4 @@
-const crypto = require("crypto");
-
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   const url = new URL(req.url, "https://abdullahtayyab.dev");
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
@@ -45,7 +43,9 @@ module.exports = async (req, res) => {
   const token = tokenJson.access_token;
   if (!token) {
     res.writeHead(400, { "Content-Type": "text/html" });
-    res.end("<h1>GitHub did not return a token. Check app type/permissions.</h1>");
+    res.end(
+      "<h1>GitHub did not return a token. Check app type/permissions.</h1>"
+    );
     return;
   }
 
@@ -70,4 +70,4 @@ module.exports = async (req, res) => {
 
   res.writeHead(200, { "Content-Type": "text/html" });
   res.end(html);
-};
+}

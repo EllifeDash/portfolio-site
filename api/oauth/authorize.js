@@ -1,8 +1,12 @@
-module.exports = (req, res) => {
+import { randomBytes } from "crypto";
+
+export default function handler(req, res) {
   const clientId = process.env.GITHUB_CLIENT_ID || "Ov23lifw9Lwf5o8N8IOO";
   const redirectUri = "https://abdullahtayyab.dev/api/oauth/callback";
-  const scope = (new URL(req.url, "https://abdullahtayyab.dev").searchParams.get("scope")) || "repo";
-  const state = require("crypto").randomBytes(16).toString("hex");
+  const scope =
+    new URL(req.url, "https://abdullahtayyab.dev").searchParams.get("scope") ||
+    "repo";
+  const state = randomBytes(16).toString("hex");
 
   res.setHeader(
     "Set-Cookie",
@@ -20,4 +24,4 @@ module.exports = (req, res) => {
 
   res.writeHead(302, { Location: url });
   res.end();
-};
+}
