@@ -1,5 +1,7 @@
 ---
 import Reading from "../../components/Reading.astro";
+import Callout from "../../components/Callout.astro";
+import Figure from "../../components/Figure.astro";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -32,7 +34,7 @@ const readingTime = Math.max(1, Math.round(words / 200));
   <hr class="divider" />
 
   <div class="prose">
-    <Content />
+    <Content components={{ Callout, Figure }} />
   </div>
 
   <hr class="divider" />
