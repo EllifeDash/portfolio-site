@@ -1,6 +1,6 @@
 ---
 title: "Aafiyat — Offline-First Patient Management"
-summary: "A desktop patient management system for private clinics in Pakistan: SOAP consultations, prescriptions, billing, and scheduling that works without the internet."
+summary: "A desktop patient-management system for private clinics in Pakistan — consultations, prescriptions, billing, and scheduling that keep running with no internet at all."
 role: "Solo Full-Stack Developer"
 status: "released"
 stack: ["Node.js", "Express", "SQLite", "Supabase", "Electron", "Tailwind CSS"]
@@ -12,7 +12,7 @@ order: 1
 Private clinics across Pakistan run on paper and memory. Most have unreliable or no
 internet, no budget for cloud subscriptions, and strict patient-privacy expectations.
 They needed software that works the moment the doctor opens the laptop — no login
-spinner, no "connection lost" error in the middle of a consultation.
+spinner, no "connection lost" mid-consultation.
 
 ## My approach
 
@@ -23,9 +23,9 @@ blocks on it.
 
 ## Workflow
 
-1. **Model the clinic, not the database.** I started from the consultation: chief
-   complaint → history → SOAP note → prescription → billing. The data model followed
-   the workflow, not the other way around.
+1. **Model the clinic, not the database.** I started from the consultation itself —
+   chief complaint → history → SOAP note → prescription → billing — and let the data
+   model follow that, not the other way around.
 2. **Electron shell + Express API.** A local Express server talks to SQLite; the
    Electron window is just a fast SPA. No server to deploy, no ports to manage.
 3. **SOAP-first notes.** Structured templates keep notes consistent and billable,

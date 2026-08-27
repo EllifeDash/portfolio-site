@@ -26,13 +26,13 @@ export interface ContactInfo {
 export const profile = {
   name: "Abdullah Tayyab",
   alias: "Ellife Dash",
-  title: "IT Operations & Full-Stack Web Developer",
+  title: "Full-Stack Developer & Offline-First PWA Specialist",
   tagline:
-    "Full-stack developer building fast, offline-first web applications with React & Node",
+    "Full-Stack Developer · Offline-First Web Apps & PWAs",
   location: "Nankana Sahib, Punjab, Pakistan",
   timezone: "PKT (UTC+5)",
   summary:
-    "IT operations professional with 5+ years in government infrastructure at Punjab Police, complemented by 2+ years of full-stack web development. I build practical, offline-first software for local needs — from clinic management systems to citizen-facing healthcare tools — and I write about the craft along the way.",
+    "Full-stack developer specializing in offline-first web applications and progressive web apps (PWAs) — software that keeps running through dead zones, power cuts, and bad connections. Five-plus years operating mission-critical systems for a government department taught me what \"reliable\" actually costs. I build that discipline into every freelance project, from clinic software to browser extensions.",
   contact: {
     email: "aeikay99@gmail.com",
     phone: ["+92 324 0096098", "+92 343 8587209"],
@@ -55,9 +55,9 @@ export const profile = {
       period: "Apr 2021 - Present",
       startDate: "2021-04-07",
       highlights: [
-        "Operate a wide range of internal government systems — CMS (Complaints), FIR, PKM (Citizen Facilitation), Hotel Eye, TRS (Tenant Registration), AVLS (Vehicle Tracking), eFOAS (e-Filing), and more",
-        "Manage front desk operations, public inquiries, data entry, document verification, and record management",
-        "Certified CC-III recognition 10 times for performance excellence",
+        "Operate internal government systems — complaints (CMS), FIR, citizen facilitation (PKM), tenant registration (TRS), vehicle tracking (AVLS), e-filing (eFOAS), and more",
+        "Handle front-desk operations, public inquiries, document verification, and records management",
+        "Recognized with CC-III performance commendations 10 times",
       ],
     },
     {
@@ -67,8 +67,8 @@ export const profile = {
       period: "May 2017 - May 2018",
       highlights: [
         "Data entry, document management, and system operations",
-        "Technical assistance for computer-related tasks",
-        "Recognized as Employee of the Month",
+        "Technical support for computer-related issues",
+        "Named Employee of the Month",
       ],
     },
   ] as ExperienceItem[],
@@ -78,7 +78,7 @@ export const profile = {
       field: "Computer Science (BSCS)",
       institution: "Virtual University of Pakistan",
       status: "in-progress",
-      details: ["134 total credits, 122 earned (12 remaining)", "CGPA 2.43/4.0", "Expected graduation: 2026"],
+      details: ["Currently in progress", "Expected graduation: 2026"],
     },
     {
       degree: "B.A.",
@@ -86,7 +86,7 @@ export const profile = {
       institution: "University of the Punjab",
       location: "Lahore, Pakistan",
       year: 2019,
-      details: ["2017–2019", "Second Division"],
+      details: ["2017–2019"],
     },
     {
       degree: "Diploma",
@@ -94,25 +94,7 @@ export const profile = {
       institution: "Innovative Institute",
       location: "Lahore, Pakistan",
       year: 2018,
-      details: ["Office Management Suite (Word, Excel, PowerPoint)", "Graphic Design (Photoshop, Corel Draw)"],
-    },
-    {
-      degree: "HSSC (FSc)",
-      field: "General Science",
-      institution: "Hira Public Higher Secondary School for Boys",
-      location: "Nankana Sahib, Pakistan",
-      board: "BISE Lahore",
-      year: 2017,
-      details: ["Marks: 635/1100"],
-    },
-    {
-      degree: "SSC (Matric)",
-      field: "Science (Computer Science)",
-      institution: "Govt. M.C. Boys High School",
-      location: "Nankana Sahib, Pakistan",
-      board: "BISE Lahore",
-      year: 2015,
-      details: ["Marks: 794/1100", "Grade: A"],
+      details: ["Office suite (Word, Excel, PowerPoint)", "Graphic design (Photoshop, CorelDRAW)"],
     },
   ] as EducationItem[],
   techStack: {

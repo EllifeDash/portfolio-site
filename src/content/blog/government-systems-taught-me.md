@@ -19,8 +19,8 @@ a spec.
 ## Audit trails beat cleverness
 
 When something goes wrong — and it will — the question is never "did it fail?" It's
-"what exactly changed, and by whom?" That's why I built offense-change tracking into the
-CMS Extension. Accountability is a feature.
+"what exactly changed, and by whom?" That's why offense-change tracking is a core
+feature of the CMS Extension, not an afterthought. Accountability is a feature.
 
 ## What I carry into my own projects
 

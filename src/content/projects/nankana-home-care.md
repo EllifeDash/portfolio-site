@@ -1,6 +1,6 @@
 ---
 title: "Nankana Home Care — A Three-Tier Healthcare Ecosystem"
-summary: "A public brochure site, an offline-first PWA for medical assistants, and a secure admin portal — wired together for home healthcare in a rural district."
+summary: "A brochure site, an offline-first PWA for field medical assistants, and a secure admin portal — three tools, one healthcare network, built for a rural district with patchy signal."
 role: "Full-Stack Developer"
 status: "live"
 stack: ["Vanilla JS", "Supabase", "PWA", "GitHub Pages", "n8n"]
@@ -11,9 +11,9 @@ order: 2
 ## Problem
 
 Home healthcare in a rural district means coordinators, medical assistants in the
-field, and patients' families — all needing different things from the same service. A
-single website couldn't serve a brochure viewer, a field worker with no signal, and an
-admin managing assignments at the same time.
+field, and patients' families — all needing different things from the same service. No
+single website could serve a brochure viewer, a field worker with no signal, and an
+admin managing assignments, all at once.
 
 ## My approach
 
@@ -27,7 +27,7 @@ I split the system into **three tiers**, each with the right level of technology
 
 ## Workflow
 
-1. **Map the three audiences** before writing a line of code. Each got its own surface.
+1. **Map the three audiences before writing a line of code.** Each got its own surface, built for how it would actually be used.
 2. **n8n for automation** — booking notifications and assistant assignment run as
    workflows, not bespoke backend code.
 3. **PWA for the field** — service workers and local storage keep MediAssist usable

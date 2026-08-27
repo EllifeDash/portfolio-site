@@ -14,18 +14,19 @@ const projects = (await getCollection("projects"))
   .slice(0, 3);
 ---
 
-<Base title={undefined}>
-  <section class="container hero">
-    <p class="eyebrow">{profile.title}</p>
-    <h1>{profile.name}</h1>
-    <p class="lede">{profile.tagline}.</p>
-    <p class="lede">{profile.summary}</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="/projects">View my work</a>
-      <a class="btn btn-secondary" href="/about">About me</a>
-      <a class="btn btn-secondary" href="/connect">Get in touch</a>
-    </div>
-  </section>
+  <Base title={undefined}>
+    <section class="container hero">
+      <p class="eyebrow">{profile.title}</p>
+      <h1>{profile.name}</h1>
+      <p class="lede">{profile.tagline}</p>
+      <p class="lede">I build web apps and PWAs that keep working when the internet doesn't.</p>
+      <p class="lede">{profile.summary}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/projects">See my work</a>
+        <a class="btn btn-secondary" href="/about">How I work</a>
+        <a class="btn btn-secondary" href="/connect">Start a project</a>
+      </div>
+    </section>
 
   {
     projects.length > 0 && (
@@ -33,6 +34,10 @@ const projects = (await getCollection("projects"))
         <div class="meta-row" style="justify-content:space-between;margin-bottom:var(--space-6)">
           <h2>Selected work</h2>
           <a class="link" href="/projects">All projects →</a>
+        </div>
+        <p class="muted" style="margin:0 0 var(--space-6)">
+          Real systems, built for real constraints — bad internet, tight budgets, no room for downtime.
+        </p>
         </div>
         <div class="grid grid-2">
           {projects.map((p) => (
