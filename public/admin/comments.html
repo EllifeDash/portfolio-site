@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Comments Admin — Abdullah Tayyab</title>
+    <style>
+      :root {
+        --bg: #16162e;
+        --panel: #1f1f3d;
+        --text: #e8e8f0;
+        --muted: #9a9ab5;
+        --primary: #00d4aa;
+        --danger: #e94560;
+        --border: #2c2c4a;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+      }
+      main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+      h1 { font-size: 1.5rem; margin: 0 0 4px; }
+      .sub { color: var(--muted); margin: 0 0 24px; font-size: 0.9rem; }
+      .auth {
+        display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
+      }
+      input[type="password"] {
+        flex: 1; min-width: 200px; padding: 10px 12px; border-radius: 8px;
+        border: 1px solid var(--border); background: var(--panel); color: var(--text);
+        font: inherit;
+      }
+      button {
+        font: inherit; font-weight: 600; cursor: pointer; border: none;
+        border-radius: 8px; padding: 10px 16px; transition: opacity 0.15s;
+      }
+      button:hover { opacity: 0.85; }
+      .btn-primary { background: var(--primary); color: #06241d; }
+      .btn-approve { background: var(--primary); color: #06241d; }
+      .btn-danger { background: var(--danger); color: #2a0710; }
+      #status { color: var(--muted); min-height: 1.2em; margin: 0 0 20px; font-size: 0.9rem; }
+      .card {
+        background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+        padding: 16px; margin-bottom: 12px;
+      }
+      .card.approved { border-left: 3px solid var(--primary); }
+      .meta { color: var(--muted); font-size: 0.8rem; margin-bottom: 8px; }
+      .card p.body { margin: 0 0 12px; white-space: pre-wrap; }
+      .actions { display: flex; gap: 8px; }
+      .empty { color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Comments Admin</h1>
+      <p class="sub">Enter your ADMIN_TOKEN to load and moderate comments.</p>
+      <div class="auth">
+        <input id="token" type="password" placeholder="ADMIN_TOKEN" autocomplete="off" />
+        <button id="load" class="btn-primary">Load comments</button>
+      </div>
+      <p id="status"></p>
+      <div id="list"></div>
+    </main>
+
+    <script>
+      const $ = (s) => document.querySelector(s);
+      const tokenInput = $("#token");
+      const statusEl = $("#status");
+      const listEl = $("#list");
+
+      const saved = sessionStorage.getItem("admin_token");
+      if (saved) tokenInput.value = saved;
+      tokenInput.addEventListener("input", (e) =>
+        sessionStorage.setItem("admin_token", e.target.value)
+      );
+
+      $("#load").addEventListener("click", load);
+
+      function setStatus(msg) {
+        statusEl.textContent = msg;
+      }
+
+      async function load() {
+        const token = tokenInput.value.trim();
+        if (!token) return setStatus("Enter your ADMIN_TOKEN first.");
+        setStatus("Loading…");
+        try {
+          const res = await fetch("/api/comments?moderate=1&all=1", {
+            headers: { "x-admin-token": token },
+          });
+          if (res.status === 401) return setStatus("Unauthorized — check token.");
+          if (!res.ok) return setStatus("Failed to load comments.");
+          const items = await res.json();
+          render(items, token);
+          setStatus(items.length ? `${items.length} comment(s).` : "No comments yet.");
+        } catch {
+          setStatus("Network error while loading.");
+        }
+      }
+
+      function render(items, token) {
+        listEl.innerHTML = "";
+        if (!items.length) {
+          listEl.innerHTML = '<p class="empty">No comments yet.</p>';
+          return;
+        }
+        for (const c of items) {
+          const card = document.createElement("div");
+          card.className = "card" + (c.approved ? " approved" : "");
+
+          const meta = document.createElement("div");
+          meta.className = "meta";
+          const when = new Date(c.created_at).toLocaleString();
+          meta.textContent = `${c.name} · ${c.slug} · ${when}${
+            c.approved ? " · approved" : " · pending"
+          }`;
+
+          const body = document.createElement("p");
+          body.className = "body";
+          body.textContent = c.body;
+
+          const actions = document.createElement("div");
+          actions.className = "actions";
+          if (!c.approved) {
+            const approve = document.createElement("button");
+            approve.className = "btn-approve";
+            approve.textContent = "Approve";
+            approve.onclick = () => act(token, c.slug, c.id, "approve");
+            actions.appendChild(approve);
+          }
+          const del = document.createElement("button");
+          del.className = "btn-danger";
+          del.textContent = "Delete";
+          del.onclick = () => act(token, c.slug, c.id, "delete");
+          actions.appendChild(del);
+
+          card.append(meta, body, actions);
+          listEl.appendChild(card);
+        }
+      }
+
+      async function act(token, slug, id, action) {
+        setStatus(`${action}…`);
+        try {
+          const res = await fetch("/api/comments?moderate=1", {
+            method: "PATCH",
+            headers: {
+              "x-admin-token": token,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ slug, id, action }),
+          });
+          if (res.ok) return load();
+          setStatus("Action failed.");
+        } catch {
+          setStatus("Network error during action.");
+        }
+      }
+
+      if (saved) load();
+    </script>
+  </body>
+</html>

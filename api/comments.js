@@ -69,6 +69,15 @@ function json(res, status, body) {
   res.end(payload);
 }
 
+// Track which slugs have comments so the admin view can list everything at once.
+async function addToIndex(slug) {
+  const index = (await read("comments:index")) || [];
+  if (!index.includes(slug)) {
+    index.push(slug);
+    await write("comments:index", index);
+  }
+}
+
 export default async function handler(req, res) {
   const url = new URL(req.url, "https://abdullahtayyab.dev");
 
@@ -80,6 +89,16 @@ export default async function handler(req, res) {
     const isAdmin =
       url.searchParams.get("moderate") &&
       req.headers["x-admin-token"] === process.env.ADMIN_TOKEN;
+    if (isAdmin && url.searchParams.get("all")) {
+      const index = (await read("comments:index")) || [];
+      const out = [];
+      for (const s of index) {
+        const list = (await read(`comments:${s}`)) || [];
+        for (const c of list) out.push({ ...c, slug: s });
+      }
+      out.sort((a, b) => b.created_at - a.created_at);
+      return json(res, 200, out);
+    }
     const out = isAdmin
       ? all.sort((a, b) => b.created_at - a.created_at)
       : all
@@ -142,6 +161,7 @@ export default async function handler(req, res) {
     const all = (await read(`comments:${slug}`)) || [];
     all.push(comment);
     await write(`comments:${slug}`, all);
+    await addToIndex(slug);
 
     return json(res, 202, { ok: true });
   }
