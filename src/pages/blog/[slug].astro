@@ -45,6 +45,84 @@ const articleLd = {
 
 <script type="application/ld+json" is:inline set:html={JSON.stringify(articleLd)} />
 
+<script>
+  const section = document.querySelector(".comments");
+  if (section) {
+    const slug = section.dataset.slug;
+    const list = section.querySelector("#comments-list");
+    const form = section.querySelector("#comment-form");
+    const status = section.querySelector("#comment-status");
+
+    async function load() {
+      try {
+        const res = await fetch(
+          `/api/comments?slug=${encodeURIComponent(slug)}`
+        );
+        if (!res.ok) throw new Error("bad response");
+        const comments = await res.json();
+        list.innerHTML = "";
+        if (!Array.isArray(comments) || !comments.length) {
+          list.innerHTML =
+            '<p class="muted">No comments yet — be the first to share your thoughts.</p>';
+          return;
+        }
+        for (const c of comments) {
+          const el = document.createElement("article");
+          el.className = "comment";
+          const name = document.createElement("p");
+          name.className = "comment-name";
+          name.textContent = c.name;
+          const body = document.createElement("p");
+          body.className = "comment-body";
+          body.textContent = c.body;
+          const time = document.createElement("p");
+          time.className = "comment-time muted";
+          time.textContent = new Date(c.created_at).toLocaleDateString(
+            "en-US",
+            { year: "numeric", month: "short", day: "numeric" }
+          );
+          el.append(name, body, time);
+          list.appendChild(el);
+        }
+      } catch {
+        list.innerHTML =
+          '<p class="muted">Could not load comments right now.</p>';
+      }
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const payload = {
+        slug,
+        name: String(data.get("name") || "").trim(),
+        body: String(data.get("body") || "").trim(),
+        website: String(data.get("website") || ""),
+      };
+      status.textContent = "Submitting…";
+      try {
+        const res = await fetch("/api/comments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (res.ok) {
+          form.reset();
+          status.textContent =
+            "Thanks! Your comment is awaiting moderation.";
+          load();
+        } else {
+          status.textContent = "Something went wrong. Please try again.";
+        }
+      } catch {
+        status.textContent = "Network error. Please try again.";
+      }
+    });
+
+    load();
+  }
+</script>
+
 <Reading title={data.title} description={data.description}>
   <a class="link" href="/blog">← All articles</a>
   <p class="eyebrow" style="margin-top:var(--space-5)">{data.tags.join(" · ")}</p>
@@ -61,6 +139,39 @@ const articleLd = {
   <p class="muted">
     Enjoyed this? <a class="link" href="/connect">Say hello →</a>
   </p>
+
+  <section class="comments" data-slug={post.id} aria-live="polite">
+    <h2>Comments</h2>
+    <div id="comments-list" class="comments-list">
+      <p class="muted">Loading comments…</p>
+    </div>
+
+    <form id="comment-form" class="comment-form">
+      <label class="field">
+        <span>Name</span>
+        <input type="text" name="name" maxlength="50" required />
+      </label>
+      <label class="field">
+        <span>Comment</span>
+        <textarea name="body" maxlength="2000" rows="4" required></textarea>
+      </label>
+      <input
+        type="text"
+        name="website"
+        class="hp"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+      />
+      <div class="comment-actions">
+        <button type="submit" class="btn btn-primary">Post comment</button>
+        <span id="comment-status" class="muted" role="status"></span>
+      </div>
+    </form>
+    <p class="muted comment-note">
+      Comments are reviewed before they appear. No account needed.
+    </p>
+  </section>
 
   <Fragment slot="aside">
     <div class="aside-block">
