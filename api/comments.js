@@ -1,20 +1,24 @@
-import { kv } from "@vercel/kv";
+import { Redis } from "@upstash/redis";
 
 const USE_KV = Boolean(
   process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN
 );
 
+// Upstash Redis (replaces the sunset Vercel KV). The Vercel Marketplace
+// Upstash integration injects KV_REST_API_URL / KV_REST_API_TOKEN automatically.
+const redis = USE_KV ? Redis.fromEnv() : null;
+
 // Local-dev fallback store (Vercel uses KV; `vercel dev` without KV env uses memory).
 const memStore = new Map();
 
 async function read(key) {
-  if (USE_KV) return (await kv.get(key)) ?? null;
+  if (USE_KV) return (await redis.get(key)) ?? null;
   return memStore.get(key) ?? null;
 }
 
 async function write(key, value) {
   if (USE_KV) {
-    await kv.set(key, value);
+    await redis.set(key, value);
     return;
   }
   memStore.set(key, value);
