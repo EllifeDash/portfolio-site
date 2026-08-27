@@ -3,6 +3,8 @@ import Reading from "../../components/Reading.astro";
 import Callout from "../../components/Callout.astro";
 import Figure from "../../components/Figure.astro";
 import { getCollection, render } from "astro:content";
+import { SITE } from "../../config";
+import { profile } from "../../data/profile";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", (p) => !p.data.draft);
@@ -23,7 +25,25 @@ const date = data.pubDate.toLocaleDateString("en-US", {
 });
 const words = post.body ? post.body.trim().split(/\s+/).length : 0;
 const readingTime = Math.max(1, Math.round(words / 200));
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: data.title,
+  description: data.description,
+  datePublished: data.pubDate.toISOString(),
+  dateModified: (data.updatedDate ?? data.pubDate).toISOString(),
+  keywords: data.tags.join(", "),
+  author: { "@type": "Person", name: data.author, url: SITE.domain },
+  publisher: { "@type": "Person", name: profile.name, url: SITE.domain },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": new URL(Astro.url.pathname, SITE.domain).href,
+  },
+};
 ---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(articleLd)} />
 
 <Reading title={data.title} description={data.description}>
   <a class="link" href="/blog">← All articles</a>

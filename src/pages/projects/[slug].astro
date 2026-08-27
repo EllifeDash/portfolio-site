@@ -1,6 +1,8 @@
 ---
 import Reading from "../../components/Reading.astro";
 import { getCollection, render } from "astro:content";
+import { SITE } from "../../config";
+import { profile } from "../../data/profile";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -20,7 +22,21 @@ const statusLabel: Record<string, string> = {
   "in-progress": "In progress",
   archived: "Archived",
 };
+
+const projectLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: data.title,
+  description: data.summary,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Cross-platform",
+  author: { "@type": "Person", name: profile.name, url: SITE.domain },
+  ...(data.liveUrl ? { url: data.liveUrl } : {}),
+  ...(data.repoUrl ? { codeRepository: data.repoUrl } : {}),
+};
 ---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(projectLd)} />
 
 <Reading title={data.title} description={data.summary}>
   <a class="link" href="/projects">← All projects</a>

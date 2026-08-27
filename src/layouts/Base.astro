@@ -18,6 +18,42 @@ const {
 
 const pageTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${profile.title}`;
 const canonical = new URL(Astro.url.pathname, SITE.domain).href;
+
+const sameAs = Object.values(profile.links)
+  .filter((v) => typeof v === "string" && v.startsWith("http"));
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  url: SITE.domain,
+  description: profile.summary,
+  inLanguage: "en",
+  author: { "@type": "Person", name: profile.name, url: SITE.domain },
+};
+
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  alternateName: profile.alias,
+  jobTitle: profile.title,
+  url: SITE.domain,
+  description: profile.summary,
+  email: `mailto:${profile.contact.email}`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Nankana Sahib",
+    addressRegion: "Punjab",
+    addressCountry: "PK",
+  },
+  sameAs,
+  knowsAbout: [...profile.skills.technical, ...profile.interests],
+  alumniOf: profile.education.map((e) => ({
+    "@type": "CollegeOrUniversity",
+    name: e.institution,
+  })),
+};
 ---
 
 <!doctype html>
@@ -61,6 +97,11 @@ const canonical = new URL(Astro.url.pathname, SITE.domain).href;
         } catch (e) {}
       })();
     </script>
+
+    <script async is:inline src="https://news.google.com/swg/js/v1/publisher.js"></script>
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteLd)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(personLd)} />
   </head>
   <body>
     <header class="site-header">
@@ -104,6 +145,9 @@ const canonical = new URL(Astro.url.pathname, SITE.domain).href;
         <div>
           <p class="muted">© {new Date().getFullYear()} {profile.name}</p>
           <p class="signature">Ellife Dash</p>
+          <div class="preferred-source" style="margin-top:var(--space-3)">
+            <div google-add-preferred-source-btn data-theme="dark"></div>
+          </div>
         </div>
         <SocialLinks />
       </div>
