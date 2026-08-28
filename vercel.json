@@ -8,6 +8,16 @@
       "source": "/admin",
       "destination": "/admin/",
       "permanent": false
+    },
+    {
+      "source": "/one-view",
+      "destination": "https://portfolio.abdullahtayyab.dev",
+      "permanent": false
+    },
+    {
+      "source": "/one-view/",
+      "destination": "https://portfolio.abdullahtayyab.dev",
+      "permanent": false
     }
   ],
   "headers": [

@@ -156,7 +156,7 @@ export default async function handler(req, res) {
       name: cleanName,
       body: cleanBody,
       created_at: Date.now(),
-      approved: false,
+      approved: true,
     };
     const all = (await read(`comments:${slug}`)) || [];
     all.push(comment);

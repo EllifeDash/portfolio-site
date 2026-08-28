@@ -74,11 +74,11 @@ export const profile = {
   ] as ExperienceItem[],
   education: [
     {
-      degree: "BSc (in progress)",
+      degree: "BSc",
       field: "Computer Science (BSCS)",
       institution: "Virtual University of Pakistan",
-      status: "in-progress",
-      details: ["Currently in progress", "Expected graduation: 2026"],
+      status: "completed",
+      details: ["134 total credits earned", "CGPA 2.43/4.0", "Graduated: 2026"],
     },
     {
       degree: "B.A.",
@@ -124,7 +124,7 @@ export const profile = {
     ],
   },
   certifications: {
-    inProgress: [
+    completed: [
       "CS50 — Harvard's Computer Science (edX)",
       "freeCodeCamp — Responsive Web Design",
       "freeCodeCamp — JavaScript Algorithms & Data Structures",
