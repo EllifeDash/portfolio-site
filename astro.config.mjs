@@ -10,7 +10,7 @@ const SITE_DOMAIN = 'https://abdullahtayyab.dev';
 function priorityFor(url) {
   const path = url.replace(SITE_DOMAIN, '');
   if (path === '' || path === '/') return 1.0;
-  if (/^\/(about|experience|projects|blog|connect)\/?$/.test(path)) return 0.8;
+  if (/^\/(about|experience|projects|blog|connect|now)\/?$/.test(path)) return 0.8;
   return 0.6;
 }
 

@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../data/profile";
+
+const { now } = profile;
+---
+
+<Base title="Now" description={now.description}>
+  <section class="container section">
+    <p class="eyebrow">Now</p>
+    <h1>{now.title}</h1>
+    <p class="lede">{now.description}</p>
+
+    <hr class="divider" />
+
+    <h2>What I'm working on</h2>
+    <ul class="tag-list" style="margin-top:var(--space-3)">
+      {now.activities.map((a) => <span class="chip">{a}</span>)}
+    </ul>
+
+    <hr class="divider" />
+
+    <div class="callout callout-info">
+      <h3 style="margin-bottom:8px">Looking for opportunities</h3>
+      <p class="muted">
+        I'm currently open to freelance work, collaborations, and conversations
+        about offline-first software, clinic systems, or government tech.
+      </p>
+      <p style="margin-top:16px">
+        <a class="btn btn-primary" href="/connect">Work with me</a>
+        <a class="btn btn-secondary" href="/projects">See my work</a>
+      </p>
+    </div>
+  </section>
+</Base>

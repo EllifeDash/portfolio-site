@@ -129,6 +129,7 @@ export const profile = {
       "freeCodeCamp — Responsive Web Design",
       "freeCodeCamp — JavaScript Algorithms & Data Structures",
     ],
+    inProgress: [],
   },
   languages: [
     { language: "Urdu", proficiency: "Native" },
@@ -144,4 +145,15 @@ export const profile = {
     "Chess",
     "Gaming (PUBG Mobile)",
   ],
+  now: {
+    title: "Building reliable software",
+    description:
+      "Full-Stack Developer focused on reliability and mission-critical systems.",
+    activities: [
+      "Working on Aafiyat — offline-first patient management system for clinics",
+      "Maintaining Nankana Home Care and CMS Extension",
+      "Finishing BSc in Computer Science at Virtual University of Pakistan",
+      "Continuing CS50 and freeCodeCamp certifications",
+    ],
+  },
 };
