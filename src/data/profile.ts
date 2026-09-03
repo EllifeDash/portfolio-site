@@ -26,7 +26,7 @@ export interface ContactInfo {
 export const profile = {
   name: "Abdullah Tayyab",
   alias: "Ellife Dash",
-  title: "Full-Stack Developer & Offline-First PWA Specialist",
+  title: "Full-Stack Developer specialized in MERN, Electron, and Offline-First PWAs",
   tagline:
     "Full-Stack Developer · Offline-First Web Apps & PWAs",
   location: "Nankana Sahib, Punjab, Pakistan",
@@ -41,6 +41,8 @@ export const profile = {
   links: {
     linkedin: "https://www.linkedin.com/in/abdullah-tayyab-professional/",
     github: "https://github.com/EllifeDash",
+    x: "https://x.com/_abdullahtayyab",
+    aboutme: "https://about.me/abdullahtayyab",
     behance: "https://www.behance.net/abdullahtayyab1",
     facebook: "https://www.facebook.com/profile.php?id=61575288033668",
     instagram: "https://instagram.com/ellife_dash",
