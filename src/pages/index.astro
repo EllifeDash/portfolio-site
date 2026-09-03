@@ -14,7 +14,7 @@ const projects = (await getCollection("projects"))
   .slice(0, 3);
 ---
 
-  <Base title={undefined}>
+  <Base title={profile.name} description={profile.summary}>
     <section class="container hero">
       <p class="eyebrow">{profile.title}</p>
       <h1>{profile.name}</h1>

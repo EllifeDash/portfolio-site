@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://abdullahtayyab.dev/sitemap-index.xml

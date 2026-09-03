@@ -10,13 +10,13 @@ interface Props {
   image?: string;
 }
 
-const {
-  title,
-  description = profile.summary,
-  image = "/og.svg",
-} = Astro.props;
+  const {
+    title,
+    description = "Full-Stack Developer specializing in offline-first web apps & PWAs. 5+ years mission-critical systems experience.",
+    image = "/og.svg",
+  } = Astro.props;
 
-const pageTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${profile.title}`;
+  const pageTitle = title ? `${title} — ${SITE.shortName}` : SITE.shortName;
 const canonical = new URL(Astro.url.pathname, SITE.domain).href;
 
 const sameAs = Object.values(profile.links)
