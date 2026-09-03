@@ -1,0 +1,80 @@
+---
+import Reading from "../components/Reading.astro";
+---
+
+<Reading title="Ideas" description="Notes and thoughts by Abdullah Tayyab on software, reliability, and building for real constraints">
+  <p class="eyebrow">Ideas</p>
+  <h1>Things I think about</h1>
+  <p class="lede">
+    A loose collection of ideas that shape how I build software and think about
+    the world it runs in. Nothing here is a finished article — just thinking
+    out loud.
+  </p>
+
+  <hr class="divider" />
+
+  <h2>Offline-first is a respect choice</h2>
+  <p class="lede">
+    Most apps treat the network as a constant. It isn't. When I built Aafiyat
+    for clinics, the defining constraint wasn't a feature — it was a power cut.
+    A doctor mid-consultation can't pause because the router blinked. Offline-first
+    isn't a technical fad. It's a respect choice. The person on the other side of
+    the screen shouldn't pay for our cloud bill or our uptime graphs.
+  </p>
+
+  <h2>Reliability is a human property</h2>
+  <p class="lede">
+    Five years operating government systems at Punjab Police taught me something
+    the tech world often misses: <strong>reliability is a human property, not just
+    a technical one.</strong> A tool that confuses the tired operator at 2 a.m.
+    will produce bad data no matter how elegant the backend. Audit trails beat
+    cleverness. Reversible actions beat speed. Graceful degradation beats loud
+    failure.
+  </p>
+
+  <h2>Build for the worst network day</h2>
+  <p class="lede">
+    The network is the one thing you can't control. I design software that assumes
+    it will disappear. Local state is the source of truth — remote is a replica.
+    Sync in the background, never in the critical path. Conflicts are flagged, not
+    silently resolved. Build for the worst network day, not the demo day.
+  </p>
+
+  <h2>Quiet software</h2>
+  <p class="lede">
+    Less animation, more clarity. Code and copy should make sense to someone else
+    in six months — including future me. Small, sharp tools. Solve the real
+    problem, then stop building. The best software is the kind you forget is
+    there.
+  </p>
+
+  <h2>The public sector needs better tools</h2>
+  <p class="lede">
+    Government systems affect real lives — clinics, citizen services, law
+    enforcement. Too often they're built for procurement, not for people. There's
+    an enormous opportunity for developers who care about the craft to build
+    systems that actually serve the communities they're meant for.
+  </p>
+
+  <h2>Local data, local trust</h2>
+  <p class="lede">
+    When your data lives on someone else's server, you're trusting their uptime,
+    their policies, and their incentives. Local-first architecture flips that —
+    your data is yours. Sync is a courtesy, not a crutch. The local database
+    <em>is</em> the system.
+  </p>
+
+  <hr class="divider" />
+
+  <div class="callout callout-info">
+    <h3 style="margin-bottom:8px">Looking for conversation</h3>
+    <p class="muted">
+      If any of these ideas resonate — especially around offline-first architecture,
+      clinic systems, or government tech — I'm always up for a conversation.
+    </p>
+    <p style="margin-top:16px">
+      <a class="btn btn-primary" href="/connect">Work with me</a>
+      <a class="btn btn-secondary" href="/blog">Read the blog →</a>
+    </p>
+  </div>
+</Reading>

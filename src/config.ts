@@ -12,5 +12,4 @@ export const NAV_LINKS = [
   { href: "/blog", label: "Blog" },
   { href: "/connect", label: "Connect" },
   { href: "/one-view", label: "One View" },
-  { href: "/now", label: "Now" },
 ];
