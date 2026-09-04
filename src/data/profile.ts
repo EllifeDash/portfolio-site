@@ -39,7 +39,7 @@ export const profile = {
     whatsapp: true,
   } as ContactInfo,
   links: {
-    linkedin: "https://www.linkedin.com/in/abdullah-tayyab-professional/",
+    linkedin: "https://www.linkedin.com/in/abdullahtayyab-dev/",
     github: "https://github.com/EllifeDash",
     x: "https://x.com/_abdullahtayyab",
     aboutme: "https://about.me/abdullahtayyab",
@@ -47,7 +47,14 @@ export const profile = {
     facebook: "https://www.facebook.com/profile.php?id=61575288033668",
     instagram: "https://instagram.com/ellife_dash",
     website: "https://abdullahtayyab.dev",
-    email: "aeikay99@gmail.com",
+    email: "contact@abdullahtayyab.dev",
+    bebee: "https://beebee.com/bee/abdullahtayyab",
+    apsense: "https://apsense.com/user/ellifedash",
+    websiteLaunches: "https://websitelaunches.com/site/abdullahtayyab.dev",
+    personalwebsites: "https://abdullah-tayyab.personalwebsites.org",
+    now: "https://abdullahtayyab.dev/now",
+    ideas: "https://abdullahtayyab.dev/ideas",
+    friends: "https://abdullahtayyab.dev/friends",
   },
   experience: [
     {

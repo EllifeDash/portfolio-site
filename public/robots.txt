@@ -1,3 +1,15 @@
 User-agent: *
 Allow: /
 Sitemap: https://abdullahtayyab.dev/sitemap-index.xml
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
