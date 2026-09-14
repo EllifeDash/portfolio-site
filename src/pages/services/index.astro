@@ -1,48 +1,19 @@
 ---
-import Base from "../layouts/Base.astro";
-import { SITE } from "../config";
-import { profile } from "../data/profile";
+import Base from "../../layouts/Base.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import { getCollection } from "astro:content";
+import { SITE } from "../../config";
+import { profile } from "../../data/profile";
 
 const waLink = `https://wa.me/${profile.contact.phone[0].replace(/\D/g, "")}`;
 
-const services = [
-  {
-    name: "Web Applications",
-    blurb: "Full-stack apps for real workflows — clinic & patient systems, POS terminals, booking platforms, and management dashboards.",
-    detail:
-      "React frontend, Node.js backend, and a database tuned to the data. Built to keep working through patchy connections, not just on demo day.",
-    stack: ["React", "Node.js", "Express", "MongoDB", "Supabase"],
-  },
-  {
-    name: "Progressive Web Apps",
-    blurb: "Apps that install like native and keep working on one bar of signal — or none.",
-    detail:
-      "Service worker caching, IndexedDB queues, and background sync. The app loads from cache, saves locally, and syncs the moment the connection returns.",
-    stack: ["Service Worker", "IndexedDB", "Offline-first", "Background Sync"],
-  },
-  {
-    name: "Websites",
-    blurb: "Fast, lightweight websites for portfolios, brochures, landing pages, and blogs.",
-    detail:
-      "Astro static sites that score high on Lighthouse and load instantly, or React-powered sites when you need real interactivity.",
-    stack: ["Astro", "React", "SEO", "Lighthouse 90+"],
-  },
-  {
-    name: "Desktop Applications",
-    blurb: "Offline-first desktop apps with data written to disk, not a server you hope stays up.",
-    detail:
-      "Electron apps with a local SQLite database — the machine is the system, and cloud sync happens quietly in the background.",
-    stack: ["Electron", "SQLite", "Local-first"],
-  },
-];
+const mainServices = (await getCollection("services"))
+  .filter((s) => s.data.group === "main")
+  .sort((a, b) => a.data.order - b.data.order);
 
-const extras = [
-  "Chrome extensions (Manifest V3)",
-  "Automation with n8n & GitHub Actions",
-  "Supabase setup, schemas, and sync",
-  "Performance & SEO audits",
-  "Bug fixes, maintenance & support",
-];
+const otherService = (await getCollection("services")).find((s) => s.data.group === "other");
+
+const allServices = [...mainServices, ...(otherService ? [otherService] : [])];
 
 const steps = [
   {
@@ -99,18 +70,15 @@ const serviceLd = {
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Web development services",
-    itemListElement: [
-      ...services.map((s, i) => ({
-        "@type": "Offer",
-        position: i + 1,
-        itemOffered: { "@type": "Service", name: s.name, description: s.blurb },
-      })),
-      ...extras.map((e, i) => ({
-        "@type": "Offer",
-        position: services.length + i + 1,
-        itemOffered: { "@type": "Service", name: e },
-      })),
-    ],
+    itemListElement: allServices.map((s, i) => ({
+      "@type": "Offer",
+      position: i + 1,
+      itemOffered: {
+        "@type": "Service",
+        name: s.data.title,
+        description: s.data.blurb,
+      },
+    })),
   },
 };
 ---
@@ -126,8 +94,8 @@ const serviceLd = {
     <h1>What I can build for you</h1>
     <p class="lede" style="max-width:62ch">
       Web apps, PWAs, websites, and desktop tools that keep working when the internet
-      doesn't. Built for clinics, local businesses, and service teams that can't afford
-      for their software to fail at the wrong moment.
+      doesn't. Pick a service to see exactly what it involves — or start with the one
+      closest to your problem.
     </p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="/connect">Start a project</a>
@@ -137,33 +105,26 @@ const serviceLd = {
 
   <section class="container section" style="padding-top:0">
     <div class="grid grid-2">
-      {services.map((s) => (
-        <div class="card">
-          <h3>{s.name}</h3>
-          <p style="margin:8px 0">{s.blurb}</p>
-          <p class="muted" style="margin:0 0 16px">{s.detail}</p>
-          <div>
-            {s.stack.map((t) => (
-              <span class="chip">{t}</span>
-            ))}
-          </div>
-        </div>
-      ))}
+      {mainServices.map((s) => <ServiceCard service={s} />)}
     </div>
   </section>
 
-  <section class="container section" style="padding-top:0">
-    <h2>Other ways I can help</h2>
-    <p class="muted" style="margin:8px 0 16px">
-      Needed something beyond an app or website? These usually show up as add-ons or as
-      their own small projects.
-    </p>
-    <div>
-      {extras.map((e) => (
-        <span class="chip" style="margin:0 8px 8px 0">{e}</span>
-      ))}
-    </div>
-  </section>
+  {
+    otherService && (
+      <section class="container section" style="padding-top:0">
+        <h2>Other ways I can help</h2>
+        <p class="muted" style="margin:8px 0 16px">
+          Chrome extensions, automation, Supabase setup, SEO audits, and maintenance —
+          smaller jobs that route around a bigger build.
+        </p>
+        <a class="card" href={`/services/${otherService.id}`} style="display:block">
+          <h3>{otherService.data.title}</h3>
+          <p class="muted" style="margin-top:6px">{otherService.data.blurb}</p>
+          <span class="card-arrow">View the full list →</span>
+        </a>
+      </section>
+    )
+  }
 
   <section class="container section" style="padding-top:0">
     <h2>How we'll work</h2>

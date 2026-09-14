@@ -1,0 +1,90 @@
+---
+import Reading from "../../components/Reading.astro";
+import { getCollection, render } from "astro:content";
+import { SITE } from "../../config";
+import { profile } from "../../data/profile";
+
+const waLink = `https://wa.me/${profile.contact.phone[0].replace(/\D/g, "")}`;
+
+export async function getStaticPaths() {
+  const services = await getCollection("services");
+  return services.map((service) => ({
+    params: { slug: service.id },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { data } = service;
+const { Content } = await render(service);
+
+const groupLabel = data.group === "other" ? "Other services" : "Service";
+
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: data.title,
+  description: data.blurb,
+  serviceType: groupLabel,
+  areaServed: "PK",
+  provider: { "@type": "Person", name: profile.name, url: SITE.domain },
+  url: new URL(`/services/${service.id}`, SITE.domain).href,
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    areaServed: "PK",
+  },
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(serviceLd)} />
+
+<Reading title={data.title} description={data.blurb}>
+  <a class="link" href="/services">← All services</a>
+  <p class="eyebrow" style="margin-top:var(--space-5)">{groupLabel}</p>
+  <h1>{data.title}</h1>
+  <p class="lede">{data.blurb}</p>
+
+  <hr class="divider" />
+
+  <div class="prose">
+    <Content />
+  </div>
+
+  <hr class="divider" />
+  <p class="muted">
+    Not sure this is the right fit for your situation?
+    <a class="link" href="/connect">Tell me what you're dealing with →</a>
+  </p>
+
+  <Fragment slot="aside">
+    {
+      data.highlights.length > 0 && (
+        <div class="aside-block">
+          <span class="label">This includes</span>
+          <ul class="aside-list">
+            {data.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+        </div>
+      )
+    }
+    {
+      data.stack.length > 0 && (
+        <div class="aside-block">
+          <span class="label">Stack</span>
+          <div class="tag-list">
+            {data.stack.map((s) => <span class="chip">{s}</span>)}
+          </div>
+        </div>
+      )
+    }
+    <div class="aside-block">
+      <span class="label">Ready to start?</span>
+      <ul class="aside-list">
+        <li><a href="/connect">Start a project →</a></li>
+        <li><a href={waLink} target="_blank" rel="noopener">Message on WhatsApp ↗</a></li>
+        <li><a href="/projects">See similar work →</a></li>
+      </ul>
+    </div>
+  </Fragment>
+</Reading>
