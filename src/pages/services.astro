@@ -1,0 +1,210 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config";
+import { profile } from "../data/profile";
+
+const waLink = `https://wa.me/${profile.contact.phone[0].replace(/\D/g, "")}`;
+
+const services = [
+  {
+    name: "Web Applications",
+    blurb: "Full-stack apps for real workflows — clinic & patient systems, POS terminals, booking platforms, and management dashboards.",
+    detail:
+      "React frontend, Node.js backend, and a database tuned to the data. Built to keep working through patchy connections, not just on demo day.",
+    stack: ["React", "Node.js", "Express", "MongoDB", "Supabase"],
+  },
+  {
+    name: "Progressive Web Apps",
+    blurb: "Apps that install like native and keep working on one bar of signal — or none.",
+    detail:
+      "Service worker caching, IndexedDB queues, and background sync. The app loads from cache, saves locally, and syncs the moment the connection returns.",
+    stack: ["Service Worker", "IndexedDB", "Offline-first", "Background Sync"],
+  },
+  {
+    name: "Websites",
+    blurb: "Fast, lightweight websites for portfolios, brochures, landing pages, and blogs.",
+    detail:
+      "Astro static sites that score high on Lighthouse and load instantly, or React-powered sites when you need real interactivity.",
+    stack: ["Astro", "React", "SEO", "Lighthouse 90+"],
+  },
+  {
+    name: "Desktop Applications",
+    blurb: "Offline-first desktop apps with data written to disk, not a server you hope stays up.",
+    detail:
+      "Electron apps with a local SQLite database — the machine is the system, and cloud sync happens quietly in the background.",
+    stack: ["Electron", "SQLite", "Local-first"],
+  },
+];
+
+const extras = [
+  "Chrome extensions (Manifest V3)",
+  "Automation with n8n & GitHub Actions",
+  "Supabase setup, schemas, and sync",
+  "Performance & SEO audits",
+  "Bug fixes, maintenance & support",
+];
+
+const steps = [
+  {
+    step: "01",
+    title: "Discovery",
+    text: "Walk me through your actual workflow, your users, and the conditions they work in. I ask questions before I touch a line of code.",
+  },
+  {
+    step: "02",
+    title: "Build",
+    text: "Real code, local-first architecture, no fake demo screens. I build for the environment you actually run in.",
+  },
+  {
+    step: "03",
+    title: "Test in real conditions",
+    text: "Load-shedding, patchy 4G, older hardware — we verify the system holds up where it will actually be used.",
+  },
+  {
+    step: "04",
+    title: "Deploy & support",
+    text: "You own the code, the data stays yours, and I'm available after launch for fixes, tweaks, and improvements.",
+  },
+];
+
+const faq = [
+  {
+    q: "Do you work with clients outside Pakistan?",
+    a: "Yes — I work remotely with clients anywhere. A few timezone hours are easy to manage, and I've built for clients across time zones.",
+  },
+  {
+    q: "My internet isn't great. Can you still build my website or app?",
+    a: "That's exactly what I design for. Offline-first means the app stores data locally and syncs when connectivity allows — your work never stops because the network did.",
+  },
+  {
+    q: "How long does a typical project take?",
+    a: "A straightforward website can go live in 2–3 weeks. A full web app or PWA usually takes 4–8 weeks depending on scope. We agree on milestones up front.",
+  },
+  {
+    q: "Will I own the code?",
+    a: "Yes. You own everything we build, and there are no ongoing license fees or hidden dependencies tied to my name.",
+  },
+];
+
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: profile.name,
+  url: new URL("/services", SITE.domain).href,
+  description:
+    "Offline-first web development services — web applications (MERN), progressive web apps, Astro & React websites, Electron desktop apps, Chrome extensions, and automation.",
+  email: `mailto:${profile.contact.email}`,
+  areaServed: "PK",
+  image: new URL("/og.svg", SITE.domain).href,
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Web development services",
+    itemListElement: [
+      ...services.map((s, i) => ({
+        "@type": "Offer",
+        position: i + 1,
+        itemOffered: { "@type": "Service", name: s.name, description: s.blurb },
+      })),
+      ...extras.map((e, i) => ({
+        "@type": "Offer",
+        position: services.length + i + 1,
+        itemOffered: { "@type": "Service", name: e },
+      })),
+    ],
+  },
+};
+---
+
+<Base
+  title="Services"
+  description="Web development services by Abdullah Tayyab — offline-first web apps (MERN), PWAs, Astro & React websites, Electron desktop apps, Chrome extensions, and automation, built for Pakistan's real internet conditions."
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceLd)} />
+
+  <section class="container section">
+    <p class="eyebrow">Services</p>
+    <h1>What I can build for you</h1>
+    <p class="lede" style="max-width:62ch">
+      Web apps, PWAs, websites, and desktop tools that keep working when the internet
+      doesn't. Built for clinics, local businesses, and service teams that can't afford
+      for their software to fail at the wrong moment.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/connect">Start a project</a>
+      <a class="btn btn-secondary" href="/projects">See my work</a>
+    </div>
+  </section>
+
+  <section class="container section" style="padding-top:0">
+    <div class="grid grid-2">
+      {services.map((s) => (
+        <div class="card">
+          <h3>{s.name}</h3>
+          <p style="margin:8px 0">{s.blurb}</p>
+          <p class="muted" style="margin:0 0 16px">{s.detail}</p>
+          <div>
+            {s.stack.map((t) => (
+              <span class="chip">{t}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container section" style="padding-top:0">
+    <h2>Other ways I can help</h2>
+    <p class="muted" style="margin:8px 0 16px">
+      Needed something beyond an app or website? These usually show up as add-ons or as
+      their own small projects.
+    </p>
+    <div>
+      {extras.map((e) => (
+        <span class="chip" style="margin:0 8px 8px 0">{e}</span>
+      ))}
+    </div>
+  </section>
+
+  <section class="container section" style="padding-top:0">
+    <h2>How we'll work</h2>
+    <div class="grid grid-2" style="margin-top:var(--space-4)">
+      {steps.map((st) => (
+        <div class="card">
+          <p class="eyebrow">{st.step}</p>
+          <h3>{st.title}</h3>
+          <p class="muted" style="margin:8px 0 0">{st.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container section" style="padding-top:0">
+    <h2>Common questions</h2>
+    <div style="margin-top:var(--space-4)">
+      {
+        faq.map((f) => (
+          <details class="card" style="margin-bottom:var(--space-3)">
+            <summary style="cursor:pointer;font-weight:600">{f.q}</summary>
+            <p class="muted" style="margin:12px 0 0">{f.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="container section" style="padding-top:0">
+    <div class="callout">
+      <h3 style="margin-bottom:8px">Have something in mind?</h3>
+      <p class="muted">
+        Tell me what you're running and where it struggles — I'll tell you honestly what
+        makes sense to build.
+      </p>
+      <p style="margin-top:16px">
+        <a class="btn btn-primary" href="/connect">Start a project</a>
+        <a class="btn btn-secondary" href={waLink} target="_blank" rel="noopener">
+          Message on WhatsApp
+        </a>
+      </p>
+    </div>
+  </section>
+</Base>
