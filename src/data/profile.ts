@@ -29,10 +29,10 @@ export const profile = {
   title: "Full-Stack Developer specialized in MERN, Electron, and Offline-First PWAs",
   tagline:
     "Full-Stack Developer · Offline-First Web Apps & PWAs",
-  location: "Nankana Sahib, Punjab, Pakistan",
+  location: "Punjab, Pakistan",
   timezone: "PKT (UTC+5)",
   summary:
-    "Full-stack developer specializing in offline-first web applications and progressive web apps (PWAs) — software that keeps running through dead zones, power cuts, and bad connections. Five-plus years operating mission-critical systems for a government department taught me what \"reliable\" actually costs. I build that discipline into every freelance project, from clinic software to browser extensions.",
+    "Full-stack developer specializing in offline-first web applications and progressive web apps (PWAs) — software that keeps running through dead zones, power cuts, and bad connections. Five-plus years operating mission-critical systems for a busy public department taught me what \"reliable\" actually costs. I build that discipline into every freelance project, from clinic software to browser extensions.",
   contact: {
     email: "aeikay99@gmail.com",
     phone: ["+92 324 0096098", "+92 343 8587209"],
@@ -118,7 +118,7 @@ export const profile = {
   skills: {
     technical: [
       "Web Development (MERN Stack)",
-      "Government IT Systems Operations",
+      "Mission-Critical Systems Operations",
       "Database Management (SQLite, Postgres, MongoDB)",
       "Chrome Extension Development",
       "Desktop App Development (Electron)",

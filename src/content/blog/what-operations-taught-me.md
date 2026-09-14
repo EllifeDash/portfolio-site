@@ -1,14 +1,14 @@
 ---
-title: "What Running Government Systems Taught Me About Software"
-description: "Five years operating internal government tech changed how I write code — and what I think 'reliable' means."
+title: "What Operating Mission-Critical Systems Taught Me About Software"
+description: "Five years running systems where failure has a cost changed how I write code — and what I think 'reliable' means."
 pubDate: 2026-07-22
 tags: ["operations", "career", "reliability"]
 author: "Abdullah Tayyab"
 ---
 
-People imagine government IT as slow and old. After five years operating systems like
-CMS, FIR, PKM, and eFOAS at Punjab Police, I learned something more useful: **reliability
-is a human property, not just a technical one.**
+People imagine the IT inside a big organization as slow and old. After five years
+operating the systems at the heart of a busy public department, I learned something
+more useful: **reliability is a human property, not just a technical one.**
 
 ## The system is only as calm as its operator
 
