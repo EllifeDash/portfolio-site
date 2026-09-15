@@ -11,7 +11,7 @@ const arrow =
   '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
 ---
 
-<a class="card service-card" href={`/services/${id}`}>
+<a class="card service-card" href={`/services/${id}/`}>
   <h3>{data.title}</h3>
   <p class="muted" style="margin-top:6px">{data.blurb}</p>
   <span class="card-arrow" set:html={`Learn more ${arrow}`}></span>

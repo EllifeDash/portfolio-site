@@ -40,7 +40,7 @@ const serviceLd = {
 <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceLd)} />
 
 <Reading title={data.title} description={data.blurb}>
-  <a class="link" href="/services">← All services</a>
+  <a class="link" href="/services/">← All services</a>
   <p class="eyebrow" style="margin-top:var(--space-5)">{groupLabel}</p>
   <h1>{data.title}</h1>
   <p class="lede">{data.blurb}</p>
@@ -54,7 +54,7 @@ const serviceLd = {
   <hr class="divider" />
   <p class="muted">
     Not sure this is the right fit for your situation?
-    <a class="link" href="/connect">Tell me what you're dealing with →</a>
+    <a class="link" href="/connect/">Tell me what you're dealing with →</a>
   </p>
 
   <Fragment slot="aside">
@@ -81,9 +81,9 @@ const serviceLd = {
     <div class="aside-block">
       <span class="label">Ready to start?</span>
       <ul class="aside-list">
-        <li><a href="/connect">Start a project →</a></li>
+        <li><a href="/connect/">Start a project →</a></li>
         <li><a href={waLink} target="_blank" rel="noopener">Message on WhatsApp ↗</a></li>
-        <li><a href="/projects">See similar work →</a></li>
+        <li><a href="/projects/">See similar work →</a></li>
       </ul>
     </div>
   </Fragment>

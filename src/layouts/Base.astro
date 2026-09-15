@@ -16,7 +16,7 @@ interface Props {
     image = "/og.svg",
   } = Astro.props;
 
-  const pageTitle = title ? `${title} — ${SITE.shortName}` : SITE.shortName;
+  const pageTitle = title ? `${title} — ${SITE.shortName}` : SITE.name;
 const canonical = new URL(Astro.url.pathname, SITE.domain).href;
 
 const sameAs = Object.values(profile.links)

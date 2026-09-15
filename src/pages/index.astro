@@ -14,7 +14,7 @@ const projects = (await getCollection("projects"))
   .slice(0, 3);
 ---
 
-  <Base title={profile.name}>
+  <Base>
     <section class="container hero">
       <p class="eyebrow">{profile.title}</p>
       <h1>{profile.name}</h1>
@@ -22,9 +22,9 @@ const projects = (await getCollection("projects"))
       <p class="lede">I build web apps and PWAs that keep working when the internet doesn't.</p>
       <p class="lede">{profile.summary}</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="/projects">See my work</a>
-        <a class="btn btn-secondary" href="/services">What I offer</a>
-        <a class="btn btn-secondary" href="/connect">Start a project</a>
+        <a class="btn btn-primary" href="/projects/">See my work</a>
+        <a class="btn btn-secondary" href="/services/">What I offer</a>
+        <a class="btn btn-secondary" href="/connect/">Start a project</a>
       </div>
     </section>
 
@@ -33,7 +33,7 @@ const projects = (await getCollection("projects"))
       <section class="container section">
         <div class="meta-row" style="justify-content:space-between;margin-bottom:var(--space-6)">
           <h2>Selected work</h2>
-          <a class="link" href="/projects">All projects →</a>
+          <a class="link" href="/projects/">All projects →</a>
         </div>
         <p class="muted" style="margin:0 0 var(--space-6)">
           Real systems, built for real constraints — bad internet, tight budgets, no room for downtime.
@@ -53,7 +53,7 @@ const projects = (await getCollection("projects"))
       <section class="container section">
         <div class="meta-row" style="justify-content:space-between;margin-bottom:var(--space-6)">
           <h2>Latest writing</h2>
-          <a class="link" href="/blog">All articles →</a>
+          <a class="link" href="/blog/">All articles →</a>
         </div>
         <div class="grid grid-2">
           {posts.map((p) => (

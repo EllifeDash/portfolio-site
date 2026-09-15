@@ -192,8 +192,8 @@ What it buys you: software that works when everything else breaks. That's a trad
 
 ## Further Reading
 
-- [Why I Build Offline-First](/blog/why-offline-first) — the three rules I follow, in short form
-- [Why I Build Software That Works When the World Doesn't](/blog/why-i-build-software-that-works) — where this obsession came from
+- [Why I Build Offline-First](/blog/why-offline-first/) — the three rules I follow, in short form
+- [Why I Build Software That Works When the World Doesn't](/blog/why-i-build-software-that-works/) — where this obsession came from
 
 ---
 

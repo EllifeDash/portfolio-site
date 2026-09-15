@@ -75,8 +75,8 @@ If you are a hiring manager or a developer team looking for someone who understa
 
 ## Further Reading
 
-- [Why I Build Offline-First](/blog/why-offline-first) — the technical rules I follow
-- [What Operating Mission-Critical Systems Taught Me](/blog/what-operations-taught-me) — the origin story
+- [Why I Build Offline-First](/blog/why-offline-first/) — the technical rules I follow
+- [What Operating Mission-Critical Systems Taught Me](/blog/what-operations-taught-me/) — the origin story
 
 ---
 

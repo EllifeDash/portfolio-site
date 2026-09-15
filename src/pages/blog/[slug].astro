@@ -124,7 +124,7 @@ const articleLd = {
 </script>
 
 <Reading title={data.title} description={data.description} image={data.image}>
-  <a class="link" href="/blog">← All articles</a>
+  <a class="link" href="/blog/">← All articles</a>
   <p class="eyebrow" style="margin-top:var(--space-5)">{data.tags.join(" · ")}</p>
   <h1>{data.title}</h1>
   <p class="lede">{data.description}</p>
@@ -137,7 +137,7 @@ const articleLd = {
 
   <hr class="divider" />
   <p class="muted">
-    Enjoyed this? <a class="link" href="/connect">Say hello →</a>
+    Enjoyed this? <a class="link" href="/connect/">Say hello →</a>
   </p>
 
   <section class="comments" data-slug={post.id} aria-live="polite">
@@ -192,8 +192,8 @@ const articleLd = {
     <div class="aside-block">
       <span class="label">More</span>
       <ul class="aside-list">
-        <li><a href="/blog">All articles →</a></li>
-        <li><a href="/projects">Selected work →</a></li>
+        <li><a href="/blog/">All articles →</a></li>
+        <li><a href="/projects/">Selected work →</a></li>
       </ul>
     </div>
   </Fragment>
