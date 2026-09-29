@@ -16,13 +16,17 @@ const posts = (await getCollection("blog", (p) => !p.data.draft)).sort((a, b) =>
 });
 ---
 
-<Base title="Blog" description="Articles and notes by Abdullah Tayyab on software, operations, and building for local needs">
+<Base
+  title="Blog"
+  description="Writing on offline-first architecture, software ownership, and building reliable software, by Abdullah Tayyab — full-stack developer in Punjab, Pakistan."
+>
   <section class="container section">
     <p class="eyebrow">Blog</p>
     <h1>Writing</h1>
     <p class="lede" style="max-width:60ch">
-      Notes on offline-first software, running mission-critical systems, clinic software, and the craft of
-      building things that work.
+      Offline-first architecture, software ownership, and the reliability habits I picked up from
+      five years running systems where downtime had a real cost. Written from Pakistan, for people
+      building where the network is never guaranteed.
     </p>
 
     {
