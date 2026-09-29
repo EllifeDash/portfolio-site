@@ -203,7 +203,7 @@ Offline-first is only half the argument. The other half is who pays for it, and 
 I've written about the same problem from the money side: **why I don't believe in monthly subscription pricing for the kind of clients and systems I build**, and why the one-time payment model — done right — is better for both sides.
 
 - Part 1: [You Don't Own That Software. You're Renting It.](/blog/you-dont-own-that-software-youre-renting-it/)
-- Part 2: *One-Time Payment vs. Monthly Subscription* — publishing next week
+- Part 2: [One-Time Payment vs. Monthly Subscription](/blog/one-time-payment-vs-monthly-subscription/)
 
 If you've ever had a client complain that "the system stopped working" because they forgot to renew a subscription, you'll want to read Part 1.
 

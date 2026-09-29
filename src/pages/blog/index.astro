@@ -3,9 +3,17 @@ import Base from "../../layouts/Base.astro";
 import { getCollection } from "astro:content";
 import PostCard from "../../components/PostCard.astro";
 
-const posts = (await getCollection("blog", (p) => !p.data.draft)).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const posts = (await getCollection("blog", (p) => !p.data.draft)).sort((a, b) => {
+  const byDate = b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+  if (byDate !== 0) return byDate;
+  // Same-day posts: keep a series in reading order, Part 1 first. Without
+  // this the tie is resolved by collection order, which is alphabetical and
+  // would list Part 2 above Part 1.
+  if (a.data.series && a.data.series === b.data.series) {
+    return (a.data.part ?? 0) - (b.data.part ?? 0);
+  }
+  return a.id.localeCompare(b.id);
+});
 ---
 
 <Base title="Blog" description="Articles and notes by Abdullah Tayyab on software, operations, and building for local needs">
