@@ -127,6 +127,42 @@ a {
 .reading-main {
   min-width: 0;
 }
+.series {
+  margin-top: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-sm, 6px);
+  background: var(--surface-hover);
+}
+.series-label {
+  margin: 0 0 8px;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.series-list {
+  margin: 0;
+  padding-left: 1.3em;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.series-list li.is-current {
+  color: var(--text-secondary);
+}
+.series-list li.is-current > span {
+  font-weight: 600;
+  color: var(--text);
+}
+.series-list a {
+  color: var(--primary);
+}
 .reading-aside {
   position: sticky;
   top: 88px;

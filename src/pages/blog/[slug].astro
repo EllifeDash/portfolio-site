@@ -18,6 +18,15 @@ const { post } = Astro.props;
 const { data } = post;
 const { Content } = await render(post);
 
+const siblings = data.series
+  ? (
+      await getCollection("blog", (p) => !p.data.draft && p.data.series === data.series)
+    )
+      .filter((p) => p.data.part)
+      .sort((a, b) => a.data.part! - b.data.part!)
+  : [];
+const seriesTotal = siblings.length;
+
 const date = data.pubDate.toLocaleDateString("en-US", {
   year: "numeric",
   month: "long",
@@ -125,6 +134,30 @@ const articleLd = {
 
 <Reading title={data.title} description={data.description} image={data.image}>
   <a class="link" href="/blog/">← All articles</a>
+  {
+    data.series && data.part && seriesTotal > 1 && (
+      <nav class="series" aria-label={`${data.series} series`}>
+        <p class="series-label">
+          {data.series} — Part {data.part} of {seriesTotal}
+        </p>
+        <ol class="series-list">
+          {siblings.map((s) => (
+            <li class={s.id === post.id ? "is-current" : undefined}>
+              {s.id === post.id ? (
+                <span aria-current="true">
+                  Part {s.data.part}: {s.data.title}
+                </span>
+              ) : (
+                <a href={`/blog/${s.id}/`}>
+                  Part {s.data.part}: {s.data.title}
+                </a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )
+  }
   <p class="eyebrow" style="margin-top:var(--space-5)">{data.tags.join(" · ")}</p>
   <h1>{data.title}</h1>
   <p class="lede">{data.description}</p>

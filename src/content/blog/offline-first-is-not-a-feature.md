@@ -7,8 +7,6 @@ author: "Abdullah Tayyab"
 image: "/assets/offline-first-thumb.webp"
 ---
 
-# Your App Shouldn't Need the Internet to Do Its Job
-
 ![Write locally first, sync when you can](/assets/offline-first-thumb.webp)
 
 **TL;DR:** Most web apps are built with the assumption that connectivity is a given. In Pakistan — and in a lot of the world — it isn't. Offline-first is not a feature. It's a design decision you make at the architecture level, before you write a single route or component. Here's how I think about it, and why it matters more than most developers admit.
@@ -192,6 +190,7 @@ What it buys you: software that works when everything else breaks. That's a trad
 
 ## Further Reading
 
+- [You Don't Own That Software. You're Renting It.](/blog/you-dont-own-that-software-youre-renting-it/) — why ownership, not connectivity, is the real reason to build this way
 - [Why I Build Offline-First](/blog/why-offline-first/) — the three rules I follow, in short form
 - [Why I Build Software That Works When the World Doesn't](/blog/why-i-build-software-that-works/) — where this obsession came from
 
@@ -199,11 +198,14 @@ What it buys you: software that works when everything else breaks. That's a trad
 
 ## On That Note — I Have Something to Say About Subscriptions
 
-I'm writing a follow-up piece about payment models in local software: specifically, **why I don't believe in monthly subscription pricing for the kind of clients and systems I build**, and why I think the one-time payment model — done right — is better for both sides.
+Offline-first is only half the argument. The other half is who pays for it, and how.
 
-If you've ever had a client complain that "the system stopped working" because they forgot to renew a subscription, you'll want to read it.
+I've written about the same problem from the money side: **why I don't believe in monthly subscription pricing for the kind of clients and systems I build**, and why the one-time payment model — done right — is better for both sides.
 
-*Subscribe or follow me on [X (@_abdullahtayyab)](https://x.com/_abdullahtayyab) so you don't miss it when it goes up.*
+- Part 1: [You Don't Own That Software. You're Renting It.](/blog/you-dont-own-that-software-youre-renting-it/)
+- Part 2: *One-Time Payment vs. Monthly Subscription* — publishing next week
+
+If you've ever had a client complain that "the system stopped working" because they forgot to renew a subscription, you'll want to read Part 1.
 
 ---
 

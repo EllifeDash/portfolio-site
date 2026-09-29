@@ -12,6 +12,8 @@ const blog = defineCollection({
     draft: z.boolean().default(false),
     author: z.string().default("Abdullah Tayyab"),
     image: z.string().optional(),
+    series: z.string().optional(),
+    part: z.number().optional(),
   }),
 });
 

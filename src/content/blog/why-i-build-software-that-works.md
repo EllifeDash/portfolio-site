@@ -4,10 +4,8 @@ description: "After 5+ years running mission-critical systems, I learned that re
 pubDate: 2026-09-08
 tags: ["offline-first", "reliability", "mern", "electron", "pwa", "pakistan"]
 author: "Abdullah Tayyab"
-readingTime: "8 min read"
-image: "https://abdullahtayyab.dev/assets/avatar_web_developer.png"
+image: "/assets/why-i-build-software-that-works.jpg"
 ---
-# Why I Build Software That Works When the World Doesn't
 
 **TL;DR:** Five years running mission-critical systems where failure has a human cost taught me: software that fails users at the wrong moment isn't software — it's a liability. Everything I build now is shaped by that standard.
 
